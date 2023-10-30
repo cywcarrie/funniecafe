@@ -1,0 +1,153 @@
+<template>
+  <Navbar></Navbar>
+  <LoadingVue :active="isLoading">
+    <div class="loading-animated" >
+        <div class="loading-animated-icon">
+          <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+        </div>
+      </div>
+  </LoadingVue>
+  <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
+    <h2 class="position-absolute text-center text-white fw-bolder">My Favorites</h2>
+  </div>
+  <section class="mb-5">
+    <div class="container">
+      <a href="#" title="Previous" class="text-primary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
+      <nav aria-label="breadcrumb" class="mt-3 mb-md-4 d-flex justify-content-start">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><router-link to="/" class="text-primary hover-nav fw-bold">Home</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">My Favorites</li>
+        </ol>
+      </nav>
+      <template v-if="favoriteProduct.length!==0">
+        <div class="d-flex justify-content-center mt-5">
+        <h1 class="fs-2 fw-bold text-primary">My Favorites</h1>
+        </div>
+        <div class="row my-5 bg-light rounded-2 py-3">
+          <div class="col table-responsive mt-4 mb-4">
+            <table class="table align-middle text-center table-light table-borderless">
+              <thead class="table-secondary">
+                <tr>
+                  <th></th>
+                  <th class="text-nowrap">Product</th>
+                  <th class="text-nowrap ps-4">Price</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+              <tr class="table-nowrap"  v-for="item in favoriteProduct" :key="item.id">
+                <td style="width: 200px" class="d-block">
+                  <div class="m-auto rounded-2" style="height: 100px; background-size: cover; background-position: center center"
+                    :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                </td>
+                <td class="text-nowrap fw-bold text-primary fs-5 ps-4 ps-lg-0">{{ item.title }}</td>
+                <td class="text-nowrap ps-4">
+                  <div class="h5 text-secondary" v-if="!item.price">NTD {{ $filters.currency(item.origin_price) }} </div>
+                  <del class="h6 text-secondary" v-if="item.price">NTD {{ $filters.currency(item.origin_price) }} </del>
+                  <div class="h5 text-primary" v-if="item.price">NTD {{ $filters.currency(item.price) }} </div>
+                </td>
+                <td class="text-nowrap text-end ps-4 ps-lg-0">
+                  <button type="button" class="btn btn-outline-primary px-5"
+                  :disabled="this.status.loadingItem === item.id"
+                  @click="addCart(item.id)">
+                    <div v-if="this.status.loadingItem === item.id"
+                    class="spinner-border text-primary spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <i class="bi bi-cart-fill"></i>
+                    Add To Cart
+                  </button>
+                </td>
+                <td class="text-nowrap">
+                  <button type="button" class="btn btn-outline-primary px-4"
+                          @click="getProduct(item.id)">
+                          <i class="bi bi-search"></i>
+                    See More
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="text-end mt-4 mb-5">
+          <router-link class="btn btn-primary ms-auto text-end hover-btn" to="/cart">Go To Cart<i class="bi bi-cart-fill ps-1"></i></router-link>
+        </div>
+      </template>
+      <template v-else>
+        <div class="py-5 mb-5">
+          <div class="text-center pt-4">
+            <h2 class="fw-bold mb-5">There are no items in favorites</h2>
+            <router-link class="btn btn-primary btn-lg fw-bold" to="/user">See More Products !</router-link>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+  <Footer></Footer>
+</template>
+
+<script>
+import Navbar from '@/components/UserNavbar.vue'
+import Footer from '@/components/FooterComponent.vue'
+export default {
+  components: {
+    Navbar,
+    Footer
+  },
+  data() {
+    return {
+      isLoading: false,
+      products: [],
+      product: {},
+      favoriteProduct: [],
+      favoriteData: JSON.parse(localStorage.getItem('favorite')) || [],
+      status: {
+        loadingItem: '' // 對應品項 id
+      }
+    }
+  },
+  inject: ['emitter'],
+  methods: {
+    getProducts() {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
+      this.$http.get(url).then((response) => {
+        this.products = response.data.products
+        this.getFavorite()
+        console.log('products:', response)
+        this.isLoading = false
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    getProduct(id) {
+      this.$router.push(`/product/${id}`)
+    },
+    getFavorite () {
+      this.favoriteProduct = this.products.filter(item => this.favoriteData.indexOf(item.id) !== -1)
+    },
+    addCart(id) {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.status.loadingItem = id
+      const cart = {
+        product_id: id,
+        qty: 1
+      }
+      this.$http.post(url, { data: cart })
+        .then((response) => {
+          this.$httpMessageState(response, 'added to cart')
+          this.emitter.emit('updatecart')
+          this.status.loadingItem = ''
+          console.log(response)
+        }).catch(error => {
+        console.log(error)
+      })
+    }
+  },
+  created () {
+    this.getProducts()
+  }
+}
+</script>

@@ -1,0 +1,75 @@
+.home{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://images.unsplash.com/photo-1467189386127-c4e5e31ee213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.homebtn-img{
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 250px;
+}
+
+.homebtn-img1{
+  background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(https://storage.googleapis.com/vue-course-api.appspot.com/funniecafe-api/1696497149990.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=XI9Cqd5zvT3yYXE0EZ2uLLPPTn5vRh4S4owC2JGcLsPIpleKq8HOfjxEL2on6xtWQbwfpMuXv8lAHkkYzcc2Whp1ezYn8%2FpbfEwhqoBig76LgcFtBojfkOhR103xmMRJKL4HWQ%2Bli4IEH8xAz0B3VX07OeU4psvpfPEC12%2FEjgu4elh%2BxqRMX7Ziq1Tugrwpd04aExcTFmqLLa%2Bdgbb5in8k4%2F05rUH2DkLcYNnX3gEJg9CcYI43j3zIPbhxhgwsxeimmnasGyMTCjlcZ%2Fx3hreQqSTVCdmC8aBtus0t8W35ISUd3d2oH6%2BpSY6HyEMMmVbjFnk5rjVZZHslDXNFBQ%3D%3D);
+}
+
+.homebtn-img2{
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(https://storage.googleapis.com/vue-course-api.appspot.com/funniecafe-api/1696496450690.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=npFmI4wPHfvbnLDi5GHrE97%2FnA5KT8tkjHSrAjzzDEdrt4D0MYxzVBPCFyGmwPe94E1Z%2FyLB9fvAh3Tw8Cu1auAVNch2HJmmiw1icGt5cswl34Gkh9Ju3GhrhwHBe3jvQolR1Q%2BBdK5%2BG8l5m%2F9oZjwIi3UiROE2VmeFRO3AKhXHs0O6FVosgPL%2Fq8c18MICnkS6%2FNHO4XJ3aQvw8p7vkgFdAZjza3cNU0B10uGifQzMrTbtq0RiwMF5VHM5jnVzsg3lpY2UW42GpS08UL2pjdffr22E5E%2FhB8rvbbpSaYgDyl8x1J%2B3YS5Ui1LwqnTlWhGGeIbsTmNYzcb%2BcEzILg%3D%3D);
+}
+
+.homebtn-img3{
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(https://storage.googleapis.com/vue-course-api.appspot.com/funniecafe-api/1696490972214.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=E3w%2BOFCvWDt9q4qTsNzRHjVhvgWZQbA4wtrRhtnkSAhqkLkRw9c6iLdqo66yBMXX8FS5wGxAseNoQY0lWWp9a4i%2FyzJR9M63wdBEzVTwII7gDSuMNyJbV3IRNrt3S5TJq3hIMPqAoQ7JbkKzgLrpNlmWWUimSPcpk9TB%2FfPgSUb1Aj3Sd3tZQDYsI2YqX8dgZElMey4JKR%2FNDSerGwTjp9z3u6d3wo%2FmRByajOEXDtq%2BibDj1afm50MhHsFZSbQ%2BwZl1DWazJ9TKL8jAktF%2Bkou%2BARb35gbXdzTMsoytdaFQBPWhJwK36gOIiuf99itUa7KV9NwFXd0bz8GTZt222g%3D%3D);
+}
+
+.homebtn-img{
+  transition: all 0.4s ease;
+  &:hover{
+    opacity: 0.8;
+    }
+}
+
+.bounce-out-down {
+  animation: bounce-out-down 2s ease infinite;
+}
+
+@keyframes bounce-out-down {
+  0% { transform: translateY(0); }
+  20% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.more{
+  top: 55vh;
+}
+
+.about{
+  background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2678&q=80) no-repeat fixed;  
+  background-size: cover;
+  background-position: center;
+}
+
+.code {
+  position: relative;
+  background: #594844;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  border-radius: 40px;
+  padding: 15px 30px;
+  overflow: hidden;
+  .code-text{
+    letter-spacing: 4px;
+  }
+}

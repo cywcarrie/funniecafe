@@ -1,0 +1,25 @@
+html {
+  overflow-y: scroll;
+}
+body{
+  width: 100%;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+}
+a:active{
+  color: #9a908d !important;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color:#9a908d;
+  border-color: #9a908d;
+}
+img{
+  max-width: 100%;
+  height : auto ;
+ }
+.cursor-pointer{
+  cursor: pointer;
+}
