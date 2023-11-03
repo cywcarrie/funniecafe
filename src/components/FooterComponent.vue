@@ -21,7 +21,7 @@
             <li class="nav-item ms-3"><a class="text-white hover-nav" href="#" @click.prevent="goToLogin" title="Admin Login"><i style="font-size: 24px" class="bi bi-person-circle"></i></a></li>
           </ul>
         </div>
-        <p class="text-center text-white">© Fuunie Cafe - Only for Self Learning Purpose</p>
+        <p class="text-center text-white">© Funnie Cafe - Only for Self Learning Purpose</p>
       </footer>
     </div>
   </section>
