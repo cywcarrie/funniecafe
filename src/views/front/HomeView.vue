@@ -13,7 +13,7 @@
     <!--首頁封面-->
     <div class="home d-flex justify-content-center align-items-center position-relative">
       <div class="text-center text-light">
-        <h2 class="mb-3 fw-bolder text-nowrap text-uppercase lh-lg">Welcome To <br><span class="text-secondary fs-1">Funnie's Cafe</span></h2>
+        <h2 class="mb-3 fw-bolder text-nowrap text-uppercase lh-lg">Welcome To <br><span class="text-secondary fs-1">Funnie Cafe</span></h2>
       </div>
       <div class="d-flex flex-column align-items-center text-white mt-5 pt-5 more position-absolute">
         <span class="bounce-out-down">
@@ -72,7 +72,7 @@
             <h2 class="fs-1 text-primary fw-bolder">20% off</h2>
             <p class="fs-5">
               Use the coupon code
-              <span class="fs-4 fw-bolder text-primary"> funnietravel </span> to get a
+              <span class="fs-4 fw-bolder text-primary"> funniecafe </span> to get a
               <span class="fs-4 fw-bolder text-primary"> 20% </span> discount on your order.
             </p>
           </div>
@@ -80,7 +80,7 @@
             <div class="code mt-3">
               <span class="code-text fs-4 text-uppercase border-end pe-4">Code</span>
               <span class="mx-3"></span>
-              <span class="code-text fs-4">funnietravel</span>
+              <span class="code-text fs-4">funniecafe</span>
             </div>
           </div>
         </div>
