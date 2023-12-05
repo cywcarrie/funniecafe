@@ -1,10 +1,6 @@
 <template>
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
   <table class="table mt-4">
     <thead>
@@ -20,7 +16,7 @@
     <tbody>
       <template v-for="(item, key) in orders" :key="key">
         <tr v-if="orders.length"
-            :class="{'text-secondary': !item.is_paid}">
+        :class="{'text-secondary': !item.is_paid}">
           <td>{{ $filters.date(item.create_at) }}</td>
           <td><span v-text="item.user.email" v-if="item.user"></span></td>
           <td>
@@ -35,8 +31,8 @@
           <td>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" :id="`paidSwitch${item.id}`"
-                     v-model="item.is_paid"
-                     @change="updatePaid(item)">
+              v-model="item.is_paid"
+              @change="updatePaid(item)">
               <label class="form-check-label" :for="`paidSwitch${item.id}`">
                 <span v-if="item.is_paid">已付款</span>
                 <span v-else>未付款</span>
@@ -46,9 +42,9 @@
           <td>
             <div class="btn-group">
               <button class="btn btn-outline-primary btn-sm"
-                      @click="openModal(false, item)">檢視</button>
+              @click="openModal(false, item)">檢視</button>
               <button class="btn btn-outline-danger btn-sm"
-                      @click="openDelOrderModal(item)"
+              @click="openDelOrderModal(item)"
               >刪除</button>
             </div>
           </td>
@@ -57,17 +53,19 @@
     </tbody>
   </table>
   <OrderModal :order="tempOrder"
-              ref="orderModal" @update-paid="updatePaid"></OrderModal>
+  ref="orderModal" @update-paid="updatePaid"></OrderModal>
   <DelModal :item="tempOrder" ref="delModal" @del-item="delOrder"></DelModal>
   <Pagination :pages="pagination" @emit-pages="getOrders"></Pagination>
 </template>
 
 <script>
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import DelModal from '@/components/DelModal.vue'
 import OrderModal from '@/components/orderModal.vue'
 import Pagination from '@/components/PaginationComponent.vue'
+
 export default {
-  data() {
+  data () {
     return {
       orders: {},
       isNew: false,
@@ -78,12 +76,13 @@ export default {
     }
   },
   components: {
+    LoadingComponent,
     Pagination,
     DelModal,
     OrderModal
   },
   methods: {
-    getOrders(currentPage = 1) {
+    getOrders (currentPage = 1) {
       this.currentPage = currentPage
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
       this.isLoading = true
@@ -91,21 +90,21 @@ export default {
         this.orders = response.data.orders
         this.pagination = response.data.pagination
         this.isLoading = false
-        console.log(response)
+        // console.log(response)
       })
     },
-    openModal(isNew, item) {
+    openModal (isNew, item) {
       this.tempOrder = { ...item }
       this.isNew = false
       const orderComponent = this.$refs.orderModal
       orderComponent.showModal()
     },
-    openDelOrderModal(item) {
+    openDelOrderModal (item) {
       this.tempOrder = { ...item }
       const delComponent = this.$refs.delModal
       delComponent.showModal()
     },
-    updatePaid(item) {
+    updatePaid (item) {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
       const paid = {
@@ -117,18 +116,18 @@ export default {
         this.$httpMessageState(response, '更新付款狀態')
       })
     },
-    delOrder() {
+    delOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`
       this.isLoading = true
       this.$http.delete(url).then((response) => {
-        console.log(response)
+        // console.log(response)
         const delComponent = this.$refs.delModal
         delComponent.hideModal()
         this.getOrders(this.currentPage)
       })
     }
   },
-  created() {
+  created () {
     this.getOrders()
     console.log(process.env.VUE_APP_API)
   }

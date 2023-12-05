@@ -1,18 +1,14 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-        <div class="loading-animated-icon">
-          <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-        </div>
-      </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">My Favorites</h2>
   </div>
   <section class="mb-5">
     <div class="container">
-      <a href="#" title="Previous" class="text-primary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
+      <a href="#" title="Previous" class="text-secondary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
       <nav aria-label="breadcrumb" class="mt-3 mb-md-4 d-flex justify-content-start">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><router-link to="/" class="text-primary hover-nav fw-bold">Home</router-link></li>
@@ -23,7 +19,7 @@
         <div class="d-flex justify-content-center mt-5">
         <h1 class="fs-2 fw-bold text-primary">My Favorites</h1>
         </div>
-        <div class="row my-5 bg-light rounded-2 py-3">
+        <div class="row mt-4 mb-5 bg-light rounded-2 py-3">
           <div class="col table-responsive mt-4 mb-4">
             <table class="table align-middle text-center table-light table-borderless">
               <thead class="table-secondary">
@@ -33,6 +29,7 @@
                   <th class="text-nowrap ps-4">Price</th>
                   <th></th>
                   <th></th>
+                  <th class="text-end"></th>
                 </tr>
               </thead>
               <tbody class="text-center">
@@ -61,9 +58,16 @@
                 </td>
                 <td class="text-nowrap">
                   <button type="button" class="btn btn-outline-primary px-4"
-                          @click="getProduct(item.id)">
-                          <i class="bi bi-search"></i>
+                  @click="getProduct(item.id)">
+                  <i class="bi bi-search"></i>
                     See More
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-danger btn-sm"
+                  :disabled="status.loadingItem === item.id"
+                  @click="removeFavorite(item)">
+                  <i class="bi bi-x-lg"></i>
                   </button>
                 </td>
               </tr>
@@ -85,18 +89,20 @@
       </template>
     </div>
   </section>
-  <Footer></Footer>
+  <Footer />
 </template>
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 export default {
   components: {
     Navbar,
+    LoadingComponent,
     Footer
   },
-  data() {
+  data () {
     return {
       isLoading: false,
       products: [],
@@ -110,25 +116,28 @@ export default {
   },
   inject: ['emitter'],
   methods: {
-    getProducts() {
+    getProducts () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       this.isLoading = true
       this.$http.get(url).then((response) => {
         this.products = response.data.products
         this.getFavorite()
-        console.log('products:', response)
+        // console.log('products:', response)
         this.isLoading = false
       }).catch(error => {
-        console.log(error)
+        this.emitter.emit('push-message', {
+          style: 'danger',
+          title: `${error.response.data.message}`
+        })
       })
     },
-    getProduct(id) {
+    getProduct (id) {
       this.$router.push(`/product/${id}`)
     },
     getFavorite () {
       this.favoriteProduct = this.products.filter(item => this.favoriteData.indexOf(item.id) !== -1)
     },
-    addCart(id) {
+    addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.status.loadingItem = id
       const cart = {
@@ -140,11 +149,34 @@ export default {
           this.$httpMessageState(response, 'added to cart')
           this.emitter.emit('updatecart')
           this.status.loadingItem = ''
-          console.log(response)
+          // console.log(response)
         }).catch(error => {
-        console.log(error)
+          this.emitter.emit('push-message', {
+            style: 'danger',
+            title: `${error.response.data.message}`
+          })
+        })
+    },
+    removeFavorite (item) {
+      this.isLoading = true
+      this.favoriteData.splice(this.favoriteData.indexOf(item.id), 1)
+      localStorage.setItem('favorite', JSON.stringify(this.favoriteData))
+      this.emitter.emit('updatefavorite')
+      this.isLoading = false
+      this.emitter.emit('push-message', {
+        style: 'secondary',
+        title: 'Removed From My Favorites'
       })
     }
+  },
+  mounted () {
+    this.getFavorite()
+    this.emitter.on('updatefavorite', () => {
+      this.getFavorite()
+    })
+  },
+  unmounted () {
+    this.emitter.off('updatefavorite', this.getFavorite)
   },
   created () {
     this.getProducts()

@@ -30,7 +30,7 @@
 <script>
 export default {
   methods: {
-    goToLogin() {
+    goToLogin () {
       this.$router.push('/login')
     }
   }

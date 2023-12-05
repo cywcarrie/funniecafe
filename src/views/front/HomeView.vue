@@ -1,23 +1,17 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
-  <section class="mt-5">
+  <section>
     <!--首頁封面-->
     <div class="home d-flex justify-content-center align-items-center position-relative">
       <div class="text-center text-light">
-        <h2 class="mb-3 fw-bolder text-nowrap text-uppercase lh-lg">Welcome To <br><span class="text-secondary fs-1">Funnie Cafe</span></h2>
+        <h2 class="mb-3 fw-bolder text-nowrap text-uppercase lh-lg" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="50">Welcome To <br><span class="text-secondary fs-1">Funnie Cafe</span></h2>
       </div>
       <div class="d-flex flex-column align-items-center text-white mt-5 pt-5 more position-absolute">
         <span class="bounce-out-down">
-          <i class="bi bi-arrow-down fs-1"></i>
+          <i class="bi bi-chevron-double-down fs-1"></i>
         </span>
         <p class="mt-3 fs-5">Scroll</p>
       </div>
@@ -66,7 +60,7 @@
     </div>
     <!--優惠碼-->
     <div class="py-5 bg-light">
-      <div class="container">
+      <div class="container py-3">
         <div class=" row g-0 align-items-center flex-row-reverse">
           <div class="col-lg-6 text-lg-start px-lg-4 p-0 text-center">
             <h2 class="fs-1 text-primary fw-bolder">20% off</h2>
@@ -75,6 +69,9 @@
               <span class="fs-4 fw-bolder text-primary"> funniecafe </span> to get a
               <span class="fs-4 fw-bolder text-primary"> 20% </span> discount on your order.
             </p>
+            <button @click.prevent="copyCuponCode" class="btn btn-outline-primary" type="button">
+              <span><i class="bi bi-clipboard-fill pe-2"></i><span>Copy Code</span></span>
+            </button>
           </div>
           <div class="col-lg-6 text-lg-end text-start ps-lg-4 p-0 text-center">
             <div class="code mt-3">
@@ -88,9 +85,9 @@
     </div>
     <!--Swiper卡片-->
     <div class=" mt-5 bg-white">
-      <div class="container">
+      <div class="container py-3">
         <h2 class="text-center fw-bolder mb-5 text-primary text-nowrap">Hot Products</h2>
-        <Swiper></Swiper>
+        <Swiper />
         <div class="text-end mt-4">
           <router-link to='/user/all' class="btn btn-primary rounded-pill px-3">
             More Products<i class="bi bi-caret-right-fill"></i>
@@ -107,10 +104,24 @@
             <p class="fw-bold text-white pt-2">Monthly digest of what's new and exciting from us.</p>
           </div>
           <div class="col-lg-6 pt-3">
-            <div class="input-group mb-3">
+            <FormVue  v-slot="{ errors }"
+              @submit="subscribeUs"
+              ref="subscribeForm"
+              class="flex-fill">
+              <div class="input-group">
+                <FieldVue id="email" name="email" type="email" class="form-control"
+                :class="{ 'is-invalid': errors['email'] , 'is-valid': !errors['email'] && subscribe.email !== ''}"
+                placeholder="Please enter your email Email" rules="email|required"
+                v-model="subscribe.email"></FieldVue>
+                <button class="btn btn-outline-secondary text-nowrap rounded-end" type="submit"
+                :disabled="errors['email'] || !subscribe.email">Subscribe</button>
+                <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+              </div>
+            </FormVue>
+            <!-- <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Please enter your email" aria-label="Please enter your email" aria-describedby="button-addon2">
               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Subscribe</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -145,29 +156,56 @@
     </div>
     <ScrollTop></ScrollTop>
   </section>
-  <Footer></Footer>
+  <Footer />
 </template>
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import Swiper from '@/components/SwiperComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 import ScrollTop from '@/components/ScrollTop.vue'
 
 export default {
-  data() {
+  data () {
     return {
-      isLoading: false
+      isLoading: false,
+      subscribe: { email: '' }
     }
   },
   components: {
     Navbar,
+    LoadingComponent,
     Swiper,
     Footer,
     ScrollTop
   },
-  created() {
-    console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH)
+  inject: ['emitter'],
+  methods: {
+    copyCuponCode () {
+      const copyText = document.createElement('input')
+      const text = 'funniecafe'
+      copyText.select()
+      copyText.setSelectionRange(0, 99999)
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          this.emitter.emit('push-message', {
+            style: 'primary',
+            title: 'Successfully Copied'
+          })
+        })
+    },
+    subscribeUs () {
+      this.emitter.emit('push-message', {
+        style: 'primary',
+        title: 'Thanks for Subscribing'
+      })
+      this.subscribe.email = ''
+      this.$refs.subscribeForm.resetForm()
+    }
+  },
+  created () {
+    // console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH)
   }
 }
 </script>

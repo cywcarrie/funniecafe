@@ -1,18 +1,14 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">FAQs</h2>
   </div>
   <section class="mb-5">
     <div class="container">
-      <a href="#" title="Previous" class="text-primary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
+      <a href="#" title="Previous" class="text-secondary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
       <nav aria-label="breadcrumb" class="mt-3 mb-md-4 d-flex justify-content-start">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><router-link to="/" class="text-primary hover-nav fw-bold">Home</router-link></li>
@@ -113,16 +109,18 @@
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 import ScrollTop from '@/components/ScrollTop.vue'
 
 export default {
   components: {
     Navbar,
+    LoadingComponent,
     Footer,
     ScrollTop
   },
-  data() {
+  data () {
     return {
       isLoading: false
     }

@@ -1,5 +1,5 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">Our Products</h2>
   </div>
@@ -16,19 +16,19 @@
           <div class="list-group text-start fw-bold">
             <router-link to="all" class="list-group-item list-group-item-action">
               <i class="bi bi-cup-hot-fill me-2 "></i>
-                  All
+              All
             </router-link>
             <router-link to='/user/coffee' class="list-group-item list-group-item-action">
               <i class="bi bi-cup-hot-fill me-2 "></i>
-                  Coffee
+              Coffee
             </router-link>
             <router-link to='/user/macaron' class="list-group-item list-group-item-action">
               <i class="bi bi-cup-hot-fill me-2 "></i>
-                  Macaron
+              Macaron
             </router-link>
             <router-link to='/user/cheesecake' class="list-group-item list-group-item-action">
               <i class="bi bi-cup-hot-fill me-2 "></i>
-                  CheeseCake
+              CheeseCake
             </router-link>
           </div>
         </div>
@@ -39,7 +39,7 @@
     </div>
     <ScrollTop></ScrollTop>
   </section>
-  <Footer></Footer>
+  <Footer />
 </template>
 
 <script>

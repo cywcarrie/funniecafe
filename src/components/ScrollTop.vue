@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       scTimer: 0,
       scY: 0
@@ -28,7 +28,7 @@ export default {
       })
     }
   },
-  mounted() {
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   }
 }

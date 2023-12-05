@@ -1,10 +1,6 @@
 <template>
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
     <div class="container">
@@ -14,10 +10,10 @@
       <router-link to="/" class="navbar-brand"
           ><h1 class="logo text-primary fw-bolder me-3">Fun<span class="text-secondary">nie</span></h1></router-link>
       <div class="d-flex d-lg-none d-md-block">
-        <router-link to="/cart"  class="nav-link text-primary hover-nav position-relative"
-          ><i class="bi bi-cart-fill fs-3"></i>
-          <span class="badge text-primary bg-secondary bg-opacity-75 position-absolute" style="top:-11px; right:-8px;">$ {{ $filters.currency(cart.final_total) }}</span>
-          </router-link>
+        <router-link to="/cart"  class="nav-link text-primary hover-nav position-relative">
+          <i class="bi bi-cart-fill fs-3"></i>
+          <span class="badge text-primary bg-secondary bg-opacity-75 position-absolute" style="top:-11px; right:-8px;" v-if="cart.final_total > 0">$ {{ $filters.currency(cart.final_total) }}</span>
+        </router-link>
       </div>
       <div class="collapse navbar-collapse fw-bold" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
@@ -41,7 +37,7 @@
         <div class="d-flex d-none d-lg-block">
           <router-link to="/cart"  class="nav-link text-primary hover-nav position-relative fs-5"
           >Cart<i class="bi bi-cart-fill fs-3 ps-1"></i>
-          <span class="badge text-primary bg-secondary bg-opacity-75 position-absolute" style="top:-11px; right:-15px;">$ {{ $filters.currency(cart.final_total) }}</span>
+          <span class="badge text-primary bg-secondary bg-opacity-75 position-absolute" style="top:-11px; right:-15px;" v-if="cart.final_total > 0">$ {{ $filters.currency(cart.final_total) }}</span>
           </router-link>
         </div>
       </div>
@@ -50,9 +46,13 @@
 </template>
 
 <script>
+import LoadingComponent from '@/components/LoadingComponent.vue'
 
 export default {
-  data() {
+  components: {
+    LoadingComponent
+  },
+  data () {
     return {
       isLoading: false,
       cart: {},
@@ -61,15 +61,18 @@ export default {
   },
   inject: ['emitter'],
   methods: {
-    getCart() {
+    getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
       this.$http.get(url).then((response) => {
-        console.log(response)
+        // console.log(response)
         this.cart = response.data.data
         this.isLoading = false
       }).catch(error => {
-        console.log(error)
+        this.emitter.emit('push-message', {
+          style: 'danger',
+          title: `${error.response.data.message}`
+        })
       })
     }
   },

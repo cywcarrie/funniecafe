@@ -1,11 +1,7 @@
 <template>
   <div>
     <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
     <div class="text-end mt-4">
       <button class="btn btn-primary" @click="openCouponModal(true)">
@@ -53,12 +49,14 @@
 <script>
 import CouponModal from '@/components/CouponModal.vue'
 import DelModal from '@/components/DelModal.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
+
 export default {
-  components: { CouponModal, DelModal },
+  components: { CouponModal, DelModal, LoadingComponent },
   props: {
     config: Object
   },
-  data() {
+  data () {
     return {
       coupons: {},
       tempCoupon: {
@@ -72,7 +70,7 @@ export default {
     }
   },
   methods: {
-    openCouponModal(isNew, item) {
+    openCouponModal (isNew, item) {
       this.isNew = isNew
       if (this.isNew) {
         this.tempCoupon = {
@@ -83,21 +81,21 @@ export default {
       }
       this.$refs.couponModal.showModal()
     },
-    openDelCouponModal(item) {
+    openDelCouponModal (item) {
       this.tempCoupon = { ...item }
       const delComponent = this.$refs.delModal
       delComponent.showModal()
     },
-    getCoupons() {
+    getCoupons () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons`
       this.$http.get(url, this.tempProduct).then((response) => {
         this.coupons = response.data.coupons
         this.isLoading = false
-        console.log(response)
+        // console.log(response)
       })
     },
-    updateCoupon(tempCoupon) {
+    updateCoupon (tempCoupon) {
       if (this.isNew) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`
         this.$http.post(url, { data: tempCoupon }).then((response) => {
@@ -109,14 +107,14 @@ export default {
       } else {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
         this.$http.put(url, { data: this.tempCoupon }).then((response) => {
-          console.log(response)
+          // console.log(response)
           this.$httpMessageState(response, '新增優惠券')
           this.getCoupons()
           this.$refs.couponModal.hideModal()
         })
       }
     },
-    delCoupon() {
+    delCoupon () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
       this.isLoading = true
       this.$http.delete(url).then((response) => {
@@ -128,7 +126,7 @@ export default {
       })
     }
   },
-  created() {
+  created () {
     this.getCoupons()
   }
 }

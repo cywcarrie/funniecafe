@@ -1,30 +1,33 @@
 <template>
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
   <div class="container px-0">
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
       <div class="col mb-4" v-for="item in products" :key="item.id">
         <div class=" card product-card w-100 h-100" style="width: 18rem">
-          <div class="product-img cursor-pointer" @click.prevent="getProduct(item.id)">
+          <div class="product-img cursor-pointer" @click="getProduct(item.id)">
             <img
-          style=" height: 180px; background-position: center"
+            style=" height: 180px; background-position: center"
             :src="item.imageUrl"
             class="card-img-top cover-fit"
-            alt=""/>
+            alt="coffeePictures"/>
             <span class="seemore-text d-flex justify-content-center align-items-center text-white fw-bold">
-                    <i class="bi bi-search pe-1"></i>
+              <i class="bi bi-search pe-1"></i>
                 See More
             </span>
           </div>
           <div class="card-body p-3">
-            <div class="d-flex justify-content-start text-primary fw-bold">
+            <div class="d-flex justify-content-between text-primary fw-bold">
               <p><i class="bi bi-cup-hot-fill me-2"></i>{{ item.category }}</p>
+              <a href="#" title="我的最愛" @click.prevent="addFavorite(item.id)">
+                <i class="bi bi-heart text-primary fs-4" v-if="favoriteData.indexOf(item.id) === -1"></i>
+                <i class="bi bi-heart-fill text-primary fs-4" v-else></i>
+              </a>
             </div>
+            <!-- <div class="d-flex justify-content-start text-primary fw-bold">
+              <p><i class="bi bi-cup-hot-fill me-2"></i>{{ item.category }}</p>
+            </div> -->
             <h5 class="card-title fw-bolder mb-3">{{ item.title }}</h5>
             <div class="d-flex justify-content-between align-items-center mb-3">
               <div class="h5 text-secondary" v-if="!item.price">NTD {{ $filters.currency(item.origin_price) }}</div>
@@ -51,13 +54,19 @@
 </template>
 
 <script>
+import LoadingComponent from '@/components/LoadingComponent.vue'
 
 export default {
-  data() {
+  components: {
+    LoadingComponent
+  },
+  data () {
     return {
       products: [],
       product: {},
       isLoading: false,
+      id: '',
+      favoriteData: JSON.parse(localStorage.getItem('favorite')) || [],
       status: {
         loadingItem: '' // 對應品項 id
       }
@@ -65,7 +74,7 @@ export default {
   },
   inject: ['emitter'],
   methods: {
-    getProducts() {
+    getProducts () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       this.isLoading = true
       this.$http.get(url).then((response) => {
@@ -78,13 +87,16 @@ export default {
           this.isLoading = false
         }
       }).catch(error => {
-        console.log(error)
+        this.emitter.emit('push-message', {
+          style: 'danger',
+          title: `${error.response.data.message}`
+        })
       })
     },
-    getProduct(id) {
+    getProduct (id) {
       this.$router.push(`/product/${id}`)
     },
-    addCart(id) {
+    addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.status.loadingItem = id
       const cart = {
@@ -96,13 +108,38 @@ export default {
           this.$httpMessageState(response, 'added to cart')
           this.emitter.emit('updatecart')
           this.status.loadingItem = ''
-          console.log(response)
+          // console.log(response)
         }).catch(error => {
-        console.log(error)
-      })
+          this.emitter.emit('push-message', {
+            style: 'danger',
+            title: `${error.response.data.message}`
+          })
+        })
+    },
+    addFavorite (id) {
+      this.isLoading = true
+      const favoiteId = this.favoriteData.indexOf(id)
+      if (favoiteId === -1) {
+        this.favoriteData.push(id)
+        this.emitter.emit('push-message', {
+          style: 'primary',
+          title: 'Added to My Favorites'
+        })
+      } else {
+        this.favoriteData.splice(favoiteId, 1)
+        this.emitter.emit('push-message', {
+          style: 'secondary',
+          title: 'Removed From My Favorites'
+        })
+      }
+      setTimeout(() => {
+        this.isLoading = false
+      }, 300)
+      localStorage.setItem('favorite', JSON.stringify(this.favoriteData))
+      this.emitter.emit('updatefavorite')
     }
   },
-  created() {
+  created () {
     this.getProducts()
   }
 }

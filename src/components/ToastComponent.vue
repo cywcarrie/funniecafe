@@ -17,7 +17,7 @@ export default {
   props: [
     'msg'
   ],
-  mounted() {
+  mounted () {
     const toastEl = this.$refs.toast
     const toast = new Toast(toastEl, {
       delay: 6000

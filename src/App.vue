@@ -12,7 +12,7 @@ export default {
   components: {
     ToastMessages
   },
-  provide() {
+  provide () {
     return {
       emitter
     }

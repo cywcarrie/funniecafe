@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       user: {
         username: '',
@@ -47,7 +47,7 @@ export default {
     }
   },
   methods: {
-    signIn() {
+    signIn () {
       const api = `${process.env.VUE_APP_API}admin/signin`
       this.$http.post(api, this.user)
         .then((res) => {

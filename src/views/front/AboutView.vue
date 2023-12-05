@@ -1,18 +1,14 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar />
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">About Us</h2>
   </div>
   <section class="mb-5">
     <div class="container">
-      <a href="#" title="回上一頁" class="text-primary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
+      <a href="#" title="回上一頁" class="text-secondary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
       <nav aria-label="breadcrumb" class="mt-3 mb-md-4 d-flex justify-content-start">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><router-link to="/" class="text-primary hover-nav fw-bold">Home</router-link></li>
@@ -22,10 +18,10 @@
       <h2 class="text-center fw-bold text-primary mt-5">About <span class="fw-bolder fs-1 text-secondary ps-2"> Funnie Cafe</span></h2>
       <div class="row d-flex align-items-center mt-4 py-5">
         <div class="col-md-6 p-4">
-          <img src="https://images.unsplash.com/photo-1467189386127-c4e5e31ee213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80">
+          <img src="https://images.unsplash.com/photo-1467189386127-c4e5e31ee213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=640&q=80" alt="aboutfieldpicture">
         </div>
         <div class="col-md-6 mt-3">
-          <p class="fs-5 lh-lg px-3">At <sapn class="fw-bold fs-4 text-primary"> Funnie Cafe, </sapn> we offer fresh drinks and dessert based on high quality ingredients. A portion of great drinks and dessert should make you feel like you are wrapped in a warm blanket.<br>Forget about the daily stress and come relax with us. After tasting any of our menu items, you will never want to leave!</p>
+          <p class="fs-5 lh-lg px-3">At <span class="fw-bold fs-4 text-primary"> Funnie Cafe, </span> we offer fresh drinks and dessert based on high quality ingredients. A portion of great drinks and dessert should make you feel like you are wrapped in a warm blanket.<br>Forget about the daily stress and come relax with us. After tasting any of our menu items, you will never want to leave!</p>
         </div>
       </div>
       <!--聯繫我們-->
@@ -35,7 +31,7 @@
           <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
             <p class="mb-4 fs-5 fw-bold text-secondary">Address :<span class="text-primary"> Anping District, Tainan City</span></p>
             <p class="mb-4 fs-5 fw-bold text-secondary">Opening Hours :<span class="text-primary"> Mon.- Sun. 8:00-20:00</span></p>
-            <p class="mb-4 fs-5 fw-bold text-secondary">Call Us :<span class="text-primary"> 123-456-789</span></p>
+            <p class="mb-4 fs-5 fw-bold text-secondary">Call Us : <a href="tel:+886-6-1234567" class="text-primary"> 123-4567</a></p>
             <div class="mb-4">
               <a href="#" @click.prevent=""><i class="bi bi-facebook me-4 fs-4 text-primary hover-nav"></i></a>
               <a href="#" @click.prevent=""><i class="bi bi-twitter me-4 fs-4 text-primary hover-nav"></i></a>
@@ -57,8 +53,8 @@
             <FormVue class="row g-3 needs-validation" v-slot="{ errors }" @submit="submitFrom">
               <div class="col-md-12">
                 <label for="name" class="form-label">Name <small class="ps-1 text-danger">(Required)</small></label>
-                <FieldVue type="text" class="form-control"  name="姓名" id="name" :class="{ 'is-invalid': errors['姓名'] }" placeholder="Please enter your name" rules="required"></FieldVue>
-                <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+                <FieldVue type="text" class="form-control"  name="name" id="name" :class="{ 'is-invalid': errors['name'] }" placeholder="Please enter your name" rules="required"></FieldVue>
+                <ErrorMessage name="name" class="invalid-feedback"></ErrorMessage>
               </div>
               <div class="col-md-12">
                 <label for="email" class="form-label">Email <small class="ps-1 text-danger">(Required)</small></label>
@@ -67,8 +63,8 @@
               </div>
               <div class="col-md-12">
                 <label for="tel" class="form-label">Phone <small class="ps-1 text-danger">(Required)</small></label>
-                <FieldVue type="tel" class="form-control" :class="{ 'is-invalid': errors['電話'] }" name="電話" id="tel" placeholder="Please enter your phone number" rules="required"></FieldVue>
-                <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+                <FieldVue type="tel" class="form-control" :class="{ 'is-invalid': errors['phone number'] }" name="電話" id="tel" placeholder="Please enter your phone number" rules="required"></FieldVue>
+                <ErrorMessage name="phone number" class="invalid-feedback"></ErrorMessage>
               </div>
               <div class="col-md-12">
                 <div class="form-floating">
@@ -89,21 +85,23 @@
     </div>
     <ScrollTop></ScrollTop>
   </section>
-  <Footer></Footer>
+  <Footer />
 </template>
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 import ScrollTop from '@/components/ScrollTop.vue'
 
 export default {
   components: {
     Navbar,
+    LoadingComponent,
     Footer,
     ScrollTop
   },
-  data() {
+  data () {
     return {
       isLoading: false
     }

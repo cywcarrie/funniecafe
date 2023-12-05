@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
-       aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
+  aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content border-0">
         <div class="modal-header bg-dark text-white">
@@ -8,7 +8,7 @@
             <span>訂單細節</span>
           </h5>
           <button type="button" class="btn-close"
-                  data-bs-dismiss="modal" aria-label="Close"></button>
+          data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -96,10 +96,10 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary"
-                  data-bs-dismiss="modal">取消
+          data-bs-dismiss="modal">取消
           </button>
           <button type="button" class="btn btn-primary"
-                  @click="$emit('update-order', tempOrder)">確認</button>
+          @click="$emit('update-order', tempOrder)">確認</button>
         </div>
       </div>
     </div>
@@ -112,10 +112,10 @@ export default {
   props: {
     order: {
       type: Object,
-      default() { return {} }
+      default () { return {} }
     }
   },
-  data() {
+  data () {
     return {
       status: {},
       modal: '',
@@ -127,7 +127,7 @@ export default {
   mixins: [modalMixin],
   inject: ['emitter'],
   watch: {
-    order() {
+    order () {
       this.tempOrder = this.order
       this.isPaid = this.tempOrder.is_paid
     }

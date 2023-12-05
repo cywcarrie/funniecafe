@@ -3,6 +3,11 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+
+// AOS
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import {
   Form, Field, ErrorMessage, defineRule, configure
@@ -10,7 +15,8 @@ import {
 // import AllRules from '@vee-validate/rules'
 import * as AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
-import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+// import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+import en from '@vee-validate/i18n/dist/locale/en.json'
 
 import App from './App.vue'
 import router from './router'
@@ -28,17 +34,33 @@ Object.keys(AllRules).forEach((rule) => {
 })
 
 configure({
-  generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
+  generateMessage: localize({ en }), // 載入英文語系
   validateOnInput: true // 當輸入任何內容直接進行驗證
 })
 // 設定預設語系
-setLocale('zh_TW')
+setLocale('en')
+
+// configure({
+//   generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
+//   validateOnInput: true // 當輸入任何內容直接進行驗證
+// })
+// // 設定預設語系
+// setLocale('zh_TW')
+
+// AOS
+AOS.init()
 
 // 此函式的用途是整合 Ajax 的錯誤事件，統一整理發送給予 Toast 處理
 app.config.globalProperties.$httpMessageState = $httpMessageState
 
+// 每次換頁都能回到最上方
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
+})
+
 app.use(VueAxios, axios)
 app.use(router)
+app.use(AOS)
 app.component('LoadingVue', Loading)
 app.component('FormVue', Form)
 app.component('FieldVue', Field)

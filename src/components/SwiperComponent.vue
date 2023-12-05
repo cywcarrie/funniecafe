@@ -1,10 +1,6 @@
 <template>
   <LoadingVue :active="isLoading">
-    <div class="loading-animated" >
-      <div class="loading-animated-icon">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
-      </div>
-    </div>
+    <LoadingComponent></LoadingComponent>
   </LoadingVue>
    <swiper
     class="pb-5"
@@ -28,6 +24,10 @@
       '1200': {
         slidesPerView: 4,
       },
+    }"
+    :autoplay="{
+      delay: 3000,
+      disableOnInteraction: false,
     }"
   >
     <swiper-slide v-for="item in products" :key="item.id">
@@ -55,8 +55,10 @@
     </swiper-slide>
   </swiper>
 </template>
+
 <script>
- import { Pagination } from 'swiper/modules'
+import LoadingComponent from '@/components/LoadingComponent.vue'
+import { Pagination, A11y, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
 import 'swiper/css'
@@ -64,29 +66,30 @@ import 'swiper/css/pagination'
 
 export default {
   components: {
+    LoadingComponent,
     Swiper,
     SwiperSlide
   },
-  data() {
+  data () {
     return {
       isLoading: false,
       products: [],
-      modules: [Pagination]
+      modules: [Pagination, A11y, Autoplay]
     }
   },
   methods: {
-    getProducts() {
+    getProducts () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       this.isLoading = true
       this.$http.get(url).then((response) => {
         this.isLoading = false
         this.products = response.data.products
         this.getSwiper()
-        console.log('products:', response)
+        // console.log('products:', response)
       })
     },
     // 隨機取6筆資料
-    getSwiper() {
+    getSwiper () {
       const randomSwiper = []
       for (let i = 0; i < 6; i += 1) {
         const num = Math.floor(Math.random() * this.products.length)
@@ -96,7 +99,7 @@ export default {
       this.products = randomSwiper
     }
   },
-  mounted() {
+  mounted () {
     this.getProducts()
   }
 }
