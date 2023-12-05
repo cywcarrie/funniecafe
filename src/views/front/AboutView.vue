@@ -63,7 +63,7 @@
               </div>
               <div class="col-md-12">
                 <label for="tel" class="form-label">Phone <small class="ps-1 text-danger">(Required)</small></label>
-                <FieldVue type="tel" class="form-control" :class="{ 'is-invalid': errors['phone number'] }" name="電話" id="tel" placeholder="Please enter your phone number" rules="required"></FieldVue>
+                <FieldVue type="tel" class="form-control" :class="{ 'is-invalid': errors['phone number'] }" name="phone number" id="tel" placeholder="Please enter your phone number" rules="required"></FieldVue>
                 <ErrorMessage name="phone number" class="invalid-feedback"></ErrorMessage>
               </div>
               <div class="col-md-12">
