@@ -53,8 +53,8 @@
             <FormVue class="row g-3 needs-validation" v-slot="{ errors }" @submit="submitFrom">
               <div class="col-md-12">
                 <label for="name" class="form-label">Name <small class="ps-1 text-danger">(Required)</small></label>
-                <FieldVue type="text" class="form-control"  name="name" id="name" :class="{ 'is-invalid': errors['name'] }" placeholder="Please enter your name" rules="required"></FieldVue>
-                <ErrorMessage name="name" class="invalid-feedback"></ErrorMessage>
+                <FieldVue type="text" class="form-control"  name="Name" id="name" :class="{ 'is-invalid': errors['Name'] }" placeholder="Please enter your name" rules="required"></FieldVue>
+                <ErrorMessage name="Name" class="invalid-feedback"></ErrorMessage>
               </div>
               <div class="col-md-12">
                 <label for="email" class="form-label">Email <small class="ps-1 text-danger">(Required)</small></label>
@@ -63,8 +63,8 @@
               </div>
               <div class="col-md-12">
                 <label for="tel" class="form-label">Phone <small class="ps-1 text-danger">(Required)</small></label>
-                <FieldVue type="tel" class="form-control" :class="{ 'is-invalid': errors['phone number'] }" name="phone number" id="tel" placeholder="Please enter your phone number" rules="required"></FieldVue>
-                <ErrorMessage name="phone number" class="invalid-feedback"></ErrorMessage>
+                <FieldVue type="tel" class="form-control" :class="{ 'is-invalid': errors['Phone number'] }" name="Phone number" id="tel" placeholder="Please enter your phone number" rules="required"></FieldVue>
+                <ErrorMessage name="Phone number" class="invalid-feedback"></ErrorMessage>
               </div>
               <div class="col-md-12">
                 <div class="form-floating">
