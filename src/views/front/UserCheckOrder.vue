@@ -125,7 +125,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.order = res.data.order
-            // console.log(this.order)
           }
         }).catch(error => {
           this.emitter.emit('push-message', {
@@ -138,7 +137,6 @@ export default {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
       this.$http.post(url)
         .then((res) => {
-          // console.log(res)
           if (res.data.success) {
             this.getOrder()
           }
@@ -152,7 +150,6 @@ export default {
   },
   created () {
     this.orderId = this.$route.params.orderId
-    // console.log(this.orderId)
     this.getOrder()
   }
 }

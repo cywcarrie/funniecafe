@@ -108,7 +108,6 @@ export default {
           this.$httpMessageState(response, 'added to cart')
           this.emitter.emit('updatecart')
           this.status.loadingItem = ''
-          // console.log(response)
         }).catch(error => {
           this.emitter.emit('push-message', {
             style: 'danger',
