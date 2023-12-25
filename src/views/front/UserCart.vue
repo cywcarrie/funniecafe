@@ -90,7 +90,7 @@
             <div class="fs-6 fw-bold text-primary"><i class="bi bi-bag-check-fill pe-2"></i>Enter code <span class="fw-bold text-secondary">funniecafe</span> to get <span class="fw-bold text-secondary">20% </span>off your order.</div>
           </div>
           <div class="d-flex justify-content-end align-items-center mb-4">
-            <button @click.prevent="copyCuponCode" class="btn btn-outline-primary" type="button">
+            <button @click="copyCuponCode" class="btn btn-outline-primary" type="button">
               <span><i class="bi bi-clipboard-fill pe-2"></i><span>Copy Code</span></span>
             </button>
 

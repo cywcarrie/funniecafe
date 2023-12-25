@@ -69,7 +69,7 @@
               <span class="fs-4 fw-bolder text-primary"> funniecafe </span> to get a
               <span class="fs-4 fw-bolder text-primary"> 20% </span> discount on your order.
             </p>
-            <button @click.prevent="copyCuponCode" class="btn btn-outline-primary" type="button">
+            <button @click="copyCuponCode" class="btn btn-outline-primary" type="button">
               <span><i class="bi bi-clipboard-fill pe-2"></i><span>Copy Code</span></span>
             </button>
           </div>
