@@ -118,15 +118,15 @@ export default {
     },
     addFavorite (id) {
       this.isLoading = true
-      const favoiteId = this.favoriteData.indexOf(id)
-      if (favoiteId === -1) {
+      const favoriteId = this.favoriteData.indexOf(id)
+      if (favoriteId === -1) {
         this.favoriteData.push(id)
         this.emitter.emit('push-message', {
           style: 'primary',
           title: 'Added to My Favorites'
         })
       } else {
-        this.favoriteData.splice(favoiteId, 1)
+        this.favoriteData.splice(favoriteId, 1)
         this.emitter.emit('push-message', {
           style: 'secondary',
           title: 'Removed From My Favorites'
