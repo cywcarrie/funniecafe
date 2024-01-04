@@ -1,7 +1,5 @@
 <template>
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="text-end mt-3">
     <button class="btn btn-primary" type="button"
     @click="openModal(true)">
@@ -53,7 +51,6 @@
 </template>
 
 <script>
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import ProductModal from '@/components/ProductModal.vue'
 import Pagination from '@/components/PaginationComponent.vue'
 import DelModal from '@/components/DelModal.vue'
@@ -69,7 +66,6 @@ export default {
     }
   },
   components: {
-    LoadingComponent,
     ProductModal,
     DelModal,
     Pagination
@@ -110,8 +106,6 @@ export default {
       const productComponent = this.$refs.productModal
       this.$http[httpMethod](api, { data: this.tempProduct }).then((response) => {
         productComponent.hideModal()
-        // this.$httpMessageState(response, '更新')
-        // this.getProducts()
         if (response.data.success) {
           this.getProducts()
           this.emitter.emit('push-message', {
@@ -138,6 +132,7 @@ export default {
       this.$http.delete(url).then((response) => {
         const delComponent = this.$refs.delModal
         delComponent.hideModal()
+        this.$httpMessageState(response, '刪除')
         this.getProducts()
       })
     }

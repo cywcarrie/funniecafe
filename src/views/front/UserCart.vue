@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">Your Cart</h2>
   </div>
@@ -52,7 +50,6 @@
                     </div>
                   </td>
                   <td class="text-end text-nowrap">{{ $filters.currency(item.product.price) }}</td>
-                  <!-- <td class="text-end text-nowrap">{{ $filters.currency(item.total) }}</td> -->
                   <td class="text-end text-nowrap">
                     <small v-if="cart.final_total !== cart.total" class="text-success">Special：</small>
                     {{ $filters.currency(item.final_total) }}
@@ -90,7 +87,7 @@
             <div class="fs-6 fw-bold text-primary"><i class="bi bi-bag-check-fill pe-2"></i>Enter code <span class="fw-bold text-secondary">funniecafe</span> to get <span class="fw-bold text-secondary">20% </span>off your order.</div>
           </div>
           <div class="d-flex justify-content-end align-items-center mb-4">
-            <button @click="copyCuponCode" class="btn btn-outline-primary" type="button">
+            <button @click="copyCouponCode" class="btn btn-outline-primary" type="button">
               <span><i class="bi bi-clipboard-fill pe-2"></i><span>Copy Code</span></span>
             </button>
 
@@ -116,13 +113,11 @@
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 
 export default {
   components: {
     Navbar,
-    LoadingComponent,
     Footer
   },
   data () {
@@ -207,7 +202,7 @@ export default {
         })
       })
     },
-    copyCuponCode () {
+    copyCouponCode () {
       const copyText = document.createElement('input')
       const text = 'funniecafe'
       copyText.select()

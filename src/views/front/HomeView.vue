@@ -1,10 +1,7 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <section>
-    <!--首頁封面-->
     <div class="home d-flex justify-content-center align-items-center position-relative">
       <div class="text-center text-light">
         <h2 class="mb-3 fw-bolder text-nowrap text-uppercase lh-lg" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="50">Welcome To <br><span class="text-secondary fs-1">Funnie Cafe</span></h2>
@@ -16,7 +13,6 @@
         <p class="mt-3 fs-5">Scroll</p>
       </div>
     </div>
-    <!--選單-->
     <div class="py-5 bg-white">
       <div class="container">
         <div class="row justify-content-center">
@@ -42,11 +38,8 @@
             </router-link>
           </div>
         </div>
-
       </div>
-
     </div>
-    <!--關於Funnie-->
     <div class="py-5 about" id="about">
       <div class="container">
         <h2 class="text-center fs-1 fw-bolder my-5 pt-3 text-secondary text-nowrap">We Are The Best Cafe</h2>
@@ -58,7 +51,6 @@
         </div>
       </div>
     </div>
-    <!--優惠碼-->
     <div class="py-5 bg-light">
       <div class="container py-3">
         <div class=" row g-0 align-items-center flex-row-reverse">
@@ -69,7 +61,7 @@
               <span class="fs-4 fw-bolder text-primary"> funniecafe </span> to get a
               <span class="fs-4 fw-bolder text-primary"> 20% </span> discount on your order.
             </p>
-            <button @click="copyCuponCode" class="btn btn-outline-primary" type="button">
+            <button @click="copyCouponCode" class="btn btn-outline-primary" type="button">
               <span><i class="bi bi-clipboard-fill pe-2"></i><span>Copy Code</span></span>
             </button>
           </div>
@@ -83,7 +75,6 @@
         </div>
       </div>
     </div>
-    <!--Swiper卡片-->
     <div class=" mt-5 bg-white">
       <div class="container py-3">
         <h2 class="text-center fw-bolder mb-5 text-primary text-nowrap">Hot Products</h2>
@@ -91,11 +82,10 @@
         <div class="text-end mt-4">
           <router-link to='/user/all' class="btn btn-primary rounded-pill px-3">
             More Products<i class="bi bi-caret-right-fill"></i>
-            </router-link>
+          </router-link>
         </div>
       </div>
     </div>
-    <!--訂閱-->
     <div class="py-5 mt-5 about">
       <div class="container">
         <div class="row py-5">
@@ -118,15 +108,10 @@
                 <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
               </div>
             </FormVue>
-            <!-- <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Please enter your email" aria-label="Please enter your email" aria-describedby="button-addon2">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Subscribe</button>
-            </div> -->
           </div>
         </div>
       </div>
     </div>
-    <!--底部-->
     <div class="py-5 bg-light">
       <div class="container">
         <div class="row justify-content-center">
@@ -154,14 +139,13 @@
         </div>
       </div>
     </div>
-    <ScrollTop></ScrollTop>
+    <ScrollTop />
   </section>
   <Footer />
 </template>
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Swiper from '@/components/SwiperComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 import ScrollTop from '@/components/ScrollTop.vue'
@@ -175,14 +159,13 @@ export default {
   },
   components: {
     Navbar,
-    LoadingComponent,
     Swiper,
     Footer,
     ScrollTop
   },
   inject: ['emitter'],
   methods: {
-    copyCuponCode () {
+    copyCouponCode () {
       const copyText = document.createElement('input')
       const text = 'funniecafe'
       copyText.select()

@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">FAQs</h2>
   </div>
@@ -18,9 +16,7 @@
       <h2 class="text-center fw-bold text-primary mt-5">FAQs</h2>
       <div class="row justify-content-center mt-4 py-5">
         <div class="col-md-8 col-11">
-          <!--常見問題-->
           <div class="accordion" id="accordionExample">
-            <!--問題1-->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed fs-5 fw-bold px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -33,7 +29,6 @@
                 </div>
               </div>
             </div>
-            <!--問題2-->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed fs-5 fw-bold px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -46,7 +41,6 @@
                 </div>
               </div>
             </div>
-            <!--問題3-->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed fs-5 fw-bold px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -59,7 +53,6 @@
                 </div>
               </div>
             </div>
-            <!--問題4-->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingFour">
                 <button class="accordion-button collapsed fs-5 fw-bold px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -72,7 +65,6 @@
                 </div>
               </div>
             </div>
-            <!--問題5-->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingFive">
                 <button class="accordion-button collapsed fs-5 fw-bold px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -85,7 +77,6 @@
                 </div>
               </div>
             </div>
-            <!--問題6-->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingSix">
                 <button class="accordion-button collapsed fs-5 fw-bold px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
@@ -102,21 +93,19 @@
         </div>
       </div>
     </div>
-    <ScrollTop></ScrollTop>
+    <ScrollTop />
   </section>
-  <Footer></Footer>
+  <Footer />
 </template>
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 import ScrollTop from '@/components/ScrollTop.vue'
 
 export default {
   components: {
     Navbar,
-    LoadingComponent,
     Footer,
     ScrollTop
   },

@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner2 container-fluid">
   <h2 class="position-absolute text-center text-white fw-bolder">Checkout Process</h2>
   </div>
@@ -37,7 +35,6 @@
               <tbody class="text-center">
                 <tr class="table-nowrap" v-for="item in cart.carts" :key="item.id">
                   <td class="table-nowrap fw-bold text-primary">{{ item.product.category }} | {{ item.product.title }}</td>
-                  <!-- <td class="table-nowrap fw-bold text-primary">{{ item.product.title }}</td> -->
                   <td>{{ item.qty }}</td>
                   <td class="text-end text-nowrap">
                     <small v-if="cart.final_total !== cart.total" class="text-success text-end">Special：</small>
@@ -58,7 +55,6 @@
             </table>
           </div>
         </div>
-        <!--訂購人資訊-->
         <div class="row col-lg-5">
           <h2 class="text-center fw-bold mb-4">Customer Details</h2>
           <FormVue v-slot="{ errors }"
@@ -118,13 +114,11 @@
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 
 export default {
   components: {
     Navbar,
-    LoadingComponent,
     Footer
   },
   data () {

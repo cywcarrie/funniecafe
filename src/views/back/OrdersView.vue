@@ -1,7 +1,5 @@
 <template>
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <table class="table mt-4">
     <thead>
     <tr>
@@ -61,9 +59,9 @@
 </template>
 
 <script>
-import LoadingComponent from '@/components/LoadingComponent.vue'
+
 import DelModal from '@/components/DelModal.vue'
-import OrderModal from '@/components/orderModal.vue'
+import OrderModal from '@/components/OrderModal.vue'
 import Pagination from '@/components/PaginationComponent.vue'
 
 export default {
@@ -78,7 +76,6 @@ export default {
     }
   },
   components: {
-    LoadingComponent,
     Pagination,
     DelModal,
     OrderModal
@@ -122,6 +119,7 @@ export default {
       this.$http.delete(url).then((response) => {
         const delComponent = this.$refs.delModal
         delComponent.hideModal()
+        this.$httpMessageState(response, '刪除')
         this.getOrders(this.currentPage)
       })
     }

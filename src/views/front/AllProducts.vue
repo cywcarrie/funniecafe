@@ -1,7 +1,5 @@
 <template>
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="container px-0">
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
       <div class="col mb-4" v-for="item in products" :key="item.id">
@@ -25,9 +23,6 @@
                 <i class="bi bi-heart-fill text-primary fs-4" v-else></i>
               </a>
             </div>
-            <!-- <div class="d-flex justify-content-start text-primary fw-bold">
-              <p><i class="bi bi-cup-hot-fill me-2"></i>{{ item.category }}</p>
-            </div> -->
             <h5 class="card-title fw-bolder mb-3">{{ item.title }}</h5>
             <div class="d-flex justify-content-between align-items-center mb-3">
               <div class="h5 text-secondary" v-if="!item.price">NTD {{ $filters.currency(item.origin_price) }} </div>
@@ -56,12 +51,10 @@
 </template>
 
 <script>
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Pagination from '@/components/PaginationComponent.vue'
 
 export default {
   components: {
-    LoadingComponent,
     Pagination
   },
   data () {

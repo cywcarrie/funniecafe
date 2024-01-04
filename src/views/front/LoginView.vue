@@ -27,7 +27,6 @@
             v-model="user.password"
           />
         </div>
-
         <div class="text-center mt-4">
           <button class="btn btn-primary btn-block px-4 fw-bold" type="submit">Login as Admin</button>
         </div>

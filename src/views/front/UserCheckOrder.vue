@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner2 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">Checkout Process</h2>
   </div>
@@ -25,8 +23,8 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-md-10">
           <div class="d-flex justify-content-center align-items-center" v-if="order.is_paid === true">
-            <i class="bi bi-check-circle-fill fs-1 pe-2" style="color:#594844;"></i>
-            <h2 class="fw-bold mb-0 text-primary fs-1"> Thank You !</h2>
+            <i class="bi bi-check-circle-fill fs-1 pe-2" style="color:#198754;"></i>
+            <h2 class="fw-bold mb-0 text-success text-uppercase fs-1"> Success !</h2>
           </div>
           <h6 class="fw-bold mt-4 mb-5 text-center" v-if="order.is_paid === true">A confirmation as been sent to your email !</h6>
           <div class="my-5 row justify-content-center">
@@ -41,9 +39,7 @@
                 <tbody>
                 <tr v-for="item in order.products" :key="item.id">
                   <td class="text-center text-primary fw-bold">{{ item.product.category }} | {{ item.product.title }}</td>
-                  <!-- <td class="text-center text-primary fw-bold">{{ item.product.title }}</td> -->
                   <td class="text-center text-nowrap">{{ item.qty }}</td>
-                  <!-- <td class="text-center text-nowrap">{{ item.qty }}/{{ item.product.unit }}</td> -->
                   <td class="text-center text-nowrap" >{{ item.final_total }}</td>
                 </tr>
                 </tbody>
@@ -76,14 +72,14 @@
                 <tr class="table-nowrap">
                   <th class="text-nowrap">Payment Status</th>
                   <td>
-                    <span v-if="!order.is_paid" class="text-nowrap">Not Yet Paid</span>
-                    <span v-else class="text-primary fw-bold text-nowrap">Payment Completed</span>
+                    <span v-if="!order.is_paid" class="text-nowrap text-danger">Not Yet Paid</span>
+                    <span v-else class="text-success fw-bold text-nowrap">Payment Completed</span>
                   </td>
                 </tr>
                 </tbody>
               </table>
               <div class="text-end" v-if="order.is_paid === false">
-                <button class="btn btn-primary ms-auto">Confirm Payment<i class="bi bi-caret-right-fill"></i></button>
+                <button class="btn btn-primary ms-auto" type="submit">Confirm Payment<i class="bi bi-caret-right-fill"></i></button>
               </div>
               <div class="text-end" v-if="order.is_paid === true">
                 <router-link to="/user/all" class="btn btn-primary ms-auto">Continue Shopping<i class="bi bi-cart4 ps-1 fs-5"></i></router-link>
@@ -99,13 +95,11 @@
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 
 export default {
   components: {
     Navbar,
-    LoadingComponent,
     Footer
   },
   data () {

@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">Product</h2>
   </div>
@@ -36,7 +34,6 @@
           </div>
           <div class="mt-4 text-primary">
             <p class="mb-2 fw-bold"><i class="bi bi-check-circle-fill pe-2"></i>Free Delivery Over NTD 500</p>
-            <!-- <p class="mb-2 fw-bold"><i class="bi bi-check-circle-fill pe-2"></i>Get a macaron for every NTD 500 purchase</p> -->
           </div>
           <div class="d-flex justify-content-end align-items-center mt-4 pt-5">
             <div class="fs-4 text-secondary" v-if="!product.price">NTD {{  $filters.currency(product.origin_price) }}</div>
@@ -56,22 +53,19 @@
         </div>
       </div>
     </div>
-    <!--Swiper卡片-->
     <div class=" mt-5 bg-white py-5">
       <div class="container">
         <h2 class="text-center fw-bolder mb-5 text-primary text-nowrap">Hot Products</h2>
         <Swiper />
       </div>
     </div>
-    <!--ScrollTop-->
-    <ScrollTop></ScrollTop>
+    <ScrollTop />
   </section>
   <Footer />
 </template>
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Swiper from '@/components/SwiperComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 import ScrollTop from '@/components/ScrollTop.vue'
@@ -79,7 +73,6 @@ import ScrollTop from '@/components/ScrollTop.vue'
 export default {
   components: {
     Navbar,
-    LoadingComponent,
     Swiper,
     Footer,
     ScrollTop
@@ -131,7 +124,6 @@ export default {
         this.isLoading = false
         this.$httpMessageState(response, 'added to cart')
         this.emitter.emit('updatecart')
-        // this.$router.push('/user/all')
       }).catch(error => {
         this.emitter.emit('push-message', {
           style: 'danger',

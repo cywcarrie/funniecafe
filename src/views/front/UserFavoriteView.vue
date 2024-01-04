@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading">
-    <LoadingComponent></LoadingComponent>
-  </LoadingVue>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">My Favorites</h2>
   </div>
@@ -33,7 +31,7 @@
                 </tr>
               </thead>
               <tbody class="text-center">
-              <tr class="table-nowrap"  v-for="item in favoriteProduct" :key="item.id">
+              <tr class="table-nowrap" v-for="item in favoriteProduct" :key="item.id">
                 <td style="width: 200px" class="d-block">
                   <div class="m-auto rounded-2" style="height: 100px; background-size: cover; background-position: center center"
                     :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
@@ -94,12 +92,10 @@
 
 <script>
 import Navbar from '@/components/UserNavbar.vue'
-import LoadingComponent from '@/components/LoadingComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
 export default {
   components: {
     Navbar,
-    LoadingComponent,
     Footer
   },
   data () {
