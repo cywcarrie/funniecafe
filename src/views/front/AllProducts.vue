@@ -46,7 +46,7 @@
       </div>
     </div>
     <Pagination :pages="pagination"
-          @emit-pages="getProducts"></Pagination>
+          @emit-pages="getProducts" />
   </div>
 </template>
 
