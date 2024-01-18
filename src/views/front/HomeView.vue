@@ -47,7 +47,7 @@
           <p class="fw-bolder fs-4 lh-lg">We ensure our coffee, cakes and macarons have all the great taste, and we offer fresh drinks and dessert based on high quality. Hoping you will enjoy it.</p>
         </div>
         <div class="text-center py-3 mb-5">
-          <router-link class="btn btn-outline-secondary btn-lg fw-bold" to="/user">Shop Now</router-link>
+          <router-link class="btn btn-outline-secondary btn-lg fw-bold home-about-btn" to="/user">Shop Now</router-link>
         </div>
       </div>
     </div>

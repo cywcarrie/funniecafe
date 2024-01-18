@@ -60,7 +60,13 @@
   background-position: center;
 }
 
-.code {
+.home-about-btn{
+  &:active{
+    color: white !important;
+  }
+}
+
+.code{
   position: relative;
   background: #594844;
   color: white;
