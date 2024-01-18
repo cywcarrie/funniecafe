@@ -48,19 +48,19 @@ const routes = [
       },
       {
         path: 'all',
-        component: () => import('../views/front/productspage/AllProducts.vue')
+        component: () => import('../views/front/AllProducts.vue')
       },
       {
         path: 'coffee',
-        component: () => import('../views/front/productspage/CoffeeView.vue')
+        component: () => import('../views/front/CoffeeView.vue')
       },
       {
         path: 'cheesecake',
-        component: () => import('../views/front/productspage/CakeView.vue')
+        component: () => import('../views/front/CakeView.vue')
       },
       {
         path: 'macaron',
-        component: () => import('../views/front/productspage/MacaronView.vue')
+        component: () => import('../views/front/MacaronView.vue')
       }
     ]
   },
