@@ -1,5 +1,5 @@
 <template>
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
    <swiper
     class="pb-5"
     :modules="modules"
@@ -38,13 +38,13 @@
             alt=""
           />
           <div class="card-body p-3">
-            <div class="d-flex justify-content-start text-secondary fw-bold">
+            <div class="d-flex justify-content-start text-primary fw-bold">
               <p><i class="bi bi-cup-hot-fill me-2 fs-5"></i>{{ item.category }}</p>
             </div>
             <h4 class="card-title fw-bolder mb-4">{{ item.title }}</h4>
             <div class="d-flex justify-content-end align-items-center mb-3">
-              <div class="fs-4 text-secondary" v-if="!item.price">NTD {{ $filters.currency(item.origin_price) }}</div>
-              <del class="fs-5 text-secondary" v-if="item.price"> NTD {{ $filters.currency(item.origin_price) }}</del>
+              <div class="fs-4 text-black-50" v-if="!item.price">NTD {{ $filters.currency(item.origin_price) }}</div>
+              <del class="fs-5 text-black-50" v-if="item.price"> NTD {{ $filters.currency(item.origin_price) }}</del>
               <div class="fs-4 text-primary fw-bold ps-2" v-if="item.price"> NTD {{ $filters.currency(item.price) }}</div>
             </div>
           </div>

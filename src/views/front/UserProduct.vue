@@ -1,16 +1,16 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">Product</h2>
   </div>
   <section class="mb-5">
     <div class="container">
-      <a href="#" title="Previous" class="text-secondary hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
+      <a href="#" title="Previous" class="text-black-50 hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
       <nav aria-label="breadcrumb" class="mt-3 mb-md-4 d-flex justify-content-start d-none d-md-block">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><router-link to="/" class="text-primary hover-nav fw-bold">Home</router-link></li>
-          <li class="breadcrumb-item"><router-link to="/user/all" class="text-primary hover-nav fw-bold">Products</router-link></li>
+          <li class="breadcrumb-item"><router-link to="/" class="text-dark hover-nav fw-bold">Home</router-link></li>
+          <li class="breadcrumb-item"><router-link to="/products" class="text-dark hover-nav fw-bold">Products</router-link></li>
           <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
         </ol>
       </nav>
@@ -24,7 +24,7 @@
           </div>
           <div class="d-flex justify-content-between align-items-center">
             <h2 class="m-0 fw-bold fs-1 text-primary">{{ product.title }}</h2>
-            <a href="#" title="我的最愛" @click.prevent="addFavorite(product.id)" class="ps-3 ps-md-0">
+            <a href="#" title="Favorite" @click.prevent="addFavorite(product.id)" class="ps-3 ps-md-0">
               <i class="bi bi-heart text-primary fs-3" v-if="favoriteData.indexOf(product.id) === -1"></i>
               <i class="bi bi-heart-fill text-primary fs-3" v-else></i>
             </a>
@@ -36,11 +36,11 @@
             <p class="mb-2 fw-bold"><i class="bi bi-check-circle-fill pe-2"></i>Free Delivery Over NTD 500</p>
           </div>
           <div class="d-flex justify-content-end align-items-center mt-4 pt-5">
-            <div class="fs-4 text-secondary" v-if="!product.price">NTD {{  $filters.currency(product.origin_price) }}</div>
-            <del class="fs-5 text-secondary" v-if="product.price">NTD {{ $filters.currency(product.origin_price) }}</del>
+            <div class="fs-4 text-black-50" v-if="!product.price">NTD {{  $filters.currency(product.origin_price) }}</div>
+            <del class="fs-5 text-black-50" v-if="product.price">NTD {{ $filters.currency(product.origin_price) }}</del>
           </div>
           <div class="d-flex justify-content-end align-items-center mb-3">
-            <div class="fs-4 ms-2 text-primary fw-bold" v-if="product.price"><span class="text-secondary">Now Sales:</span> NTD {{ $filters.currency(product.price) }}</div>
+            <div class="fs-4 ms-2 text-primary fw-bold" v-if="product.price"><span class="text-danger">Now Sales:</span> NTD {{ $filters.currency(product.price) }}</div>
           </div>
           <div class="d-flex justify-content-end align-items-center">
             <div class="input-group mb-5" style="width:220px">

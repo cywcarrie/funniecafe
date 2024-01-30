@@ -44,7 +44,7 @@ export default {
     opacity: 0.9;
     i{
       font-size: 24px;
-      color: #4a3c3a;
+      color: #6c584c;
     }
   }
 

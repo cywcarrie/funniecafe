@@ -1,5 +1,5 @@
 <template>
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
   <table class="table mt-4">
     <thead>
     <tr>

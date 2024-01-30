@@ -38,31 +38,9 @@ const routes = [
     ]
   },
   {
-    path: '/user',
-    component: () => import('../views/front/UserProductsList.vue'),
-    children: [
-      {
-        path: '',
-        name: 'Products',
-        redirect: '/user/all'
-      },
-      {
-        path: 'all',
-        component: () => import('../views/front/AllProducts.vue')
-      },
-      {
-        path: 'coffee',
-        component: () => import('../views/front/CoffeeView.vue')
-      },
-      {
-        path: 'cheesecake',
-        component: () => import('../views/front/CakeView.vue')
-      },
-      {
-        path: 'macaron',
-        component: () => import('../views/front/MacaronView.vue')
-      }
-    ]
+    name: 'products',
+    path: '/products',
+    component: () => import('../views/front/UserProducts.vue')
   },
   {
     name: 'product',

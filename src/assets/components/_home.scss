@@ -7,31 +7,22 @@
   background-position: center;
 }
 
-.homebtn-img{
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 250px;
-}
-
-.homebtn-img1{
-  background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(https://storage.googleapis.com/vue-course-api.appspot.com/funniecafe-api/1701760240725.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=qKQwjJk9UcoMpX6bOrlwEnJb1GF1Ac%2F8uA22PnmfkR09oMbkt%2FiTIiI6drRoSD8oi2a%2FRd5qeiJcGL%2BitP69wmeUG3NOW0CqCcLsJZX2FqxfNANKbLhC3SIUOeg0aHD3bwmeVbSFKjUT8z0qWBMgTRcVPVL4I%2BecEdjhjzZi9Xs6ijzPX3nob8KOCD8F5jeHDfI2h8m9wLmuf0%2FcMMl5o%2F2u4ptau72tyurXgMQFg6r3rYy9M%2BV6bGd1f%2BVLXW950OvOFRKhqE9v1k%2B3bPahuLttqOrg%2BvBey6OCxA8kSqZjSVv6AmwOALnma5EA3Bu%2B5IFu%2FvdXv3GfIRQfZgke5w%3D%3D);
-}
-
-.homebtn-img2{
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(https://storage.googleapis.com/vue-course-api.appspot.com/funniecafe-api/1701479393766.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=bEVYhUR%2BZOuibaK65ep8s3L%2FwPt7gf0SKRBcijD3pQ8Qi9eba0N9HC%2Bn9hFrOZ3nOi6e6hPOQUHLrmlufY%2BSmfx23glxgJdd5WPXdl1aBtQ6S8obqoZwGS8o3cVbPqG%2BQ20x2Ut4zJXIPIoT2zfQrfnJV8Tfz0vY7KQ0WCD8XX7v8G9X7japbN%2BRsbXFPW5ui4m%2FYGAH2%2Flzjj6ON3r8roG3oAQYHabAYAnh0pgOCyqHLn0gzzJkAfhU3rDEkyzfhGY0%2FyeBIc2W8xfOfZGDcUV77ENPwlCAiQbiTS4H4Y0zshxOzTCcQF4K0GHgwCHoxpd4g9Jq4cOUDycK%2Fve7KA%3D%3D);
-}
-
-.homebtn-img3{
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(https://storage.googleapis.com/vue-course-api.appspot.com/funniecafe-api/1701479259784.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=n8T6i8oSZ2rnUuIbglML8B%2Fe7mhrhOOu79DtZA7VgaQB9R6Gb%2FMmK3Nr%2FPP6n6mdxnqaLFG9Ik6C2qaNLRS7YMlyIFgKWhrOPjRYXHt8q07BQUYnzUO2v2%2FH8OG69%2FWFKw5gQVqCUAfwGR%2BnFKg%2FEwM6t5sTAJPPKwuaASW%2BTJuXtUGgawJYqkxPe5vE1vo2UDBy2xJ4XLzixQiCicZjPgib2nc227VnlykhYdySikdz9qDNQEMyyglwPx4O4rcBLh%2BvtpXLXsZ8lMXUBmwikPm7OwtKFiQ3VYENtQWRC2ow4D8mA%2Bt2osyN1tF9I3OADkyrLm5zZj7ssvlyHrOKEA%3D%3D);
-}
-
-.homebtn-img{
-  transition: all 0.4s ease;
-  &:hover{
-    opacity: 0.8;
-    }
+.open {
+  &::before,
+  &::after {
+    content: '';
+    width: 2px;
+    height: 32px;
+    background-color: #6c584c;
+  }
+  &::before {
+    margin-right: 32px;
+    transform: rotate(-35deg);
+  }
+  &::after {
+    margin-left: 32px;
+    transform: rotate(35deg);
+  }
 }
 
 .bounce-out-down {
@@ -68,7 +59,7 @@
 
 .code{
   position: relative;
-  background: #594844;
+  background: #6c584c;
   color: white;
   text-align: center;
   display: inline-block;

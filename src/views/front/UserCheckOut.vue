@@ -1,21 +1,21 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#594844'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner2 container-fluid">
   <h2 class="position-absolute text-center text-white fw-bolder">Checkout Process</h2>
   </div>
   <section class="mb-5">
     <div class="container">
       <div class="row text-center px-3 my-5">
-        <div class="col-4 d-flex flex-column p-3 fw-bold mb-0 bg-secondary text-primary pay-header active">
+        <div class="col-4 d-flex flex-column p-3 fw-bold mb-0 bg-secondary bg-gradient bg-opacity-75 text-primary pay-header active">
           <span class="mb-2">STEP 1</span>
           <span>Order Information</span>
         </div>
-        <div class="col-4 d-flex flex-column p-3 fw-bold mb-0 bg-secondary text-primary pay-header">
+        <div class="col-4 d-flex flex-column p-3 fw-bold mb-0 bg-secondary bg-gradient bg-opacity-75 text-primary pay-header">
           <span class="mb-2">STEP 2</span>
           <span>Payment Confirmation</span>
         </div>
-        <div class="col-4 d-flex flex-column p-3 fw-bold mb-0 bg-secondary text-primary pay-header">
+        <div class="col-4 d-flex flex-column p-3 fw-bold mb-0 bg-secondary bg-gradient bg-opacity-75 text-primary pay-header">
           <span class="mb-2">STEP 3</span>
           <span>Checkout Complete</span>
         </div>

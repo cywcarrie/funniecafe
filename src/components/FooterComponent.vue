@@ -8,7 +8,7 @@
           >Home</router-link></li>
             <li class="nav-item"><router-link to="/about"  class="nav-link px-2 text-white fw-bold hover-nav"
           >About</router-link></li>
-            <li class="nav-item"><router-link to="/user/all"  class="nav-link px-2 text-white fw-bold hover-nav"
+            <li class="nav-item"><router-link to="/products"  class="nav-link px-2 text-white fw-bold hover-nav"
           >Products</router-link></li>
             <li class="nav-item"><router-link to="/favorite"  class="nav-link px-2 text-white fw-bold hover-nav"
           >Favorites</router-link></li>
