@@ -16,7 +16,7 @@
       </nav>
       <div class="row d-flex justify-content-center mb-5 mt-4 mt-md-0">
         <article class="col-lg-7">
-          <img :src="product.imageUrl" alt="" class="img-fluid mb-3 bg-cover bg-center rounded-2">
+          <img :src="product.imageUrl" alt="productImage" class="img-fluid mb-3 bg-cover bg-center rounded-2">
         </article>
         <div class="col-lg-5 ps-lg-5 ">
           <div class="d-flex justify-content-start text-secondary fw-bold mt-4 mt-md-0">

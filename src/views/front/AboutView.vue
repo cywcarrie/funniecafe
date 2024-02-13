@@ -16,10 +16,10 @@
       <h2 class="text-center fw-bold text-primary mt-5">About <span class="fw-bolder fs-1 text-secondary ps-2"> Funnie Cafe</span></h2>
       <div class="row d-flex align-items-center mt-4 py-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
         <div class="col-md-6 p-4">
-          <img src="https://images.unsplash.com/photo-1467189386127-c4e5e31ee213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=640&q=80" alt="aboutfieldpicture1">
+          <img src="https://i.imgur.com/WMgxDrd.jpg" alt="aboutFieldImage1">
         </div>
         <div class="col-md-6 mt-3 mt-md-0">
-          <p class="fs-5 lh-lg px-3">At <span class="fw-bold fs-4 text-secondary"> Funnie Cafe, </span> we offer fresh drinks and dessert based on high quality ingredients. A portion of great drinks and dessert should make you feel like you are wrapped in a warm blanket.<br>Forget about the daily stress and come relax with us. After tasting any of our menu items, you will never want to leave!</p>
+          <p class="fs-5 lh-lg px-3">At <span class="fw-bold fs-4 text-secondary"> Funnie Cafe</span>, we offer fresh drinks and dessert based on high quality ingredients. A portion of great drinks and dessert should make you feel like you are wrapped in a warm blanket.<br>Forget about the daily stress and come relax with us. After tasting any of our menu items, you will never want to leave!</p>
         </div>
       </div>
       <div class="row d-flex flex-column-reverse flex-md-row py-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -31,7 +31,7 @@
           <p class="fs-5 fw-bold text-dark"><i class="bi bi-bag-x fs-2 text-secondary pe-3"></i>No Outside Food or Drinks</p>
         </div>
         <div class="col-md-6 p-4">
-          <img src="https://images.unsplash.com/photo-1571168136613-46401b03904e?q=80&w=640&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="aboutfieldpicture2">
+          <img src="https://i.imgur.com/H3NeD8o.jpg" alt="aboutFieldImage2">
         </div>
       </div>
       <div class="mt-5" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">

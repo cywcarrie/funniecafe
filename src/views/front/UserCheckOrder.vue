@@ -116,9 +116,9 @@ export default {
     getOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
       this.$http.get(url)
-        .then((res) => {
-          if (res.data.success) {
-            this.order = res.data.order
+        .then((response) => {
+          if (response.data.success) {
+            this.order = response.data.order
           }
         }).catch(error => {
           this.emitter.emit('push-message', {
@@ -130,8 +130,8 @@ export default {
     payOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
       this.$http.post(url)
-        .then((res) => {
-          if (res.data.success) {
+        .then((response) => {
+          if (response.data.success) {
             this.getOrder()
           }
         }).catch(error => {
