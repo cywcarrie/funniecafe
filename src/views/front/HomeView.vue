@@ -87,10 +87,10 @@
                 <FieldVue id="email" name="email" type="email" class="form-control"
                 :class="{ 'is-invalid': errors['email'] , 'is-valid': !errors['email'] && subscribe.email !== ''}"
                 placeholder="Please enter your email Email" rules="email|required"
-                v-model="subscribe.email"></FieldVue>
+                v-model="subscribe.email" />
                 <button class="btn btn-outline-secondary text-nowrap rounded-end" type="submit"
                 :disabled="errors['email'] || !subscribe.email">Subscribe</button>
-                <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+                <ErrorMessage name="email" class="invalid-feedback" />
               </div>
             </FormVue>
           </div>

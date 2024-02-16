@@ -64,8 +64,8 @@
               <FieldVue id="email" name="email" type="email" class="form-control"
               :class="{ 'is-invalid': errors['email'] }"
               placeholder="Please enter your email" rules="email|required"
-              v-model="form.user.email"></FieldVue>
-              <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.email" />
+              <ErrorMessage name="email" class="invalid-feedback" />
             </div>
 
             <div class="mb-3">
@@ -73,8 +73,8 @@
               <FieldVue id="name" name="name" type="text" class="form-control"
               :class="{ 'is-invalid': errors['name'] }"
               placeholder="Please enter your name" rules="required"
-              v-model="form.user.name"></FieldVue>
-              <ErrorMessage name="name" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.name" />
+              <ErrorMessage name="name" class="invalid-feedback" />
             </div>
 
             <div class="mb-3">
@@ -82,8 +82,8 @@
               <FieldVue id="tel" name="phone number" type="tel" class="form-control"
               :class="{ 'is-invalid': errors['phone number'] }"
               placeholder="Please enter your phone number" rules="required"
-              v-model="form.user.tel"></FieldVue>
-              <ErrorMessage name="phone number" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.tel" />
+              <ErrorMessage name="phone number" class="invalid-feedback" />
             </div>
 
             <div class="mb-3">
@@ -91,8 +91,8 @@
               <FieldVue id="address" name="address" type="text" class="form-control"
               :class="{ 'is-invalid': errors['address'] }"
               placeholder="Please enter your address" rules="required"
-              v-model="form.user.address"></FieldVue>
-              <ErrorMessage name="address" class="invalid-feedback"></ErrorMessage>
+              v-model="form.user.address" />
+              <ErrorMessage name="address" class="invalid-feedback" />
             </div>
 
             <div class="mb-3">
