@@ -27,7 +27,7 @@
     </div>
     <div class="py-5 about" id="about">
       <div class="container">
-        <h2 class="text-center fs-1 fw-bolder my-5 pt-3 text-white text-nowrap">We Are The Best Cafe</h2>
+        <h2 class="text-center fs-1 fw-bolder my-5 pt-3 text-white">We Are The Best Cafe</h2>
         <div class="text-center text-white px-3 px-md-5">
           <p class="fw-bolder fs-4 lh-lg">We ensure our coffee, cakes and macarons have all the great taste, and we offer fresh drinks and dessert based on high quality. Hoping you will enjoy it.</p>
         </div>
@@ -50,10 +50,10 @@
               <span><i class="bi bi-clipboard-fill pe-2"></i><span>Copy Code</span></span>
             </button>
           </div>
-          <div class="col-lg-6 text-lg-end text-start ps-lg-4 p-0 text-center">
+          <div class="col-lg-6 text-lg-end ps-lg-4 p-0 text-center text-bold">
             <div class="code mt-3">
-              <span class="code-text fs-4 text-uppercase border-end pe-4">Code</span>
-              <span class="mx-3"></span>
+              <span class="code-text fs-4 text-uppercase border-end pe-2 pe-sm-3">Code</span>
+              <span class="mx-1 mx-sm-2"></span>
               <span class="code-text fs-4">funniecafe</span>
             </div>
           </div>
