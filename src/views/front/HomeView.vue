@@ -16,7 +16,7 @@
     <div class="py-5 bg-white">
       <div class="container py-3" data-aos="zoom-in" data-aos-duration="800">
         <div class="row justify-content-center">
-          <div class="col-md-6 text-center">
+          <div class="col text-center">
             <h3 class="fw-bold mb-4 fs-1 d-flex justify-content-center align-items-center open text-primary text-uppercase">Grand Opening</h3>
             <p class="mb-2 fs-3 fw-bold text-capitalize text-dark">Free Delivery on all orders</p>
             <p class="mb-4">Only For 3 days</p>
