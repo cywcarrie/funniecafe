@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div class="py-5 mt-5 about">
+    <div class="py-5 mt-5 home-subscribe">
       <div class="container">
         <div class="row py-5">
           <div class="col-lg-6">
