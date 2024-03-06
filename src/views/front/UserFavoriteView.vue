@@ -142,7 +142,7 @@ export default {
       this.$http.post(url, { data: cart })
         .then((response) => {
           this.$httpMessageState(response, 'added to cart')
-          this.emitter.emit('updatecart')
+          this.emitter.emit('update-cart')
           this.status.loadingItem = ''
         }).catch(error => {
           this.emitter.emit('push-message', {
@@ -155,7 +155,7 @@ export default {
       this.isLoading = true
       this.favoriteData.splice(this.favoriteData.indexOf(item.id), 1)
       localStorage.setItem('favorite', JSON.stringify(this.favoriteData))
-      this.emitter.emit('updatefavorite')
+      this.emitter.emit('update-favorite')
       this.isLoading = false
       this.emitter.emit('push-message', {
         style: 'secondary',
@@ -165,12 +165,12 @@ export default {
   },
   mounted () {
     this.getFavorite()
-    this.emitter.on('updatefavorite', () => {
+    this.emitter.on('update-favorite', () => {
       this.getFavorite()
     })
   },
   unmounted () {
-    this.emitter.off('updatefavorite', this.getFavorite)
+    this.emitter.off('update-favorite', this.getFavorite)
   },
   created () {
     this.getProducts()

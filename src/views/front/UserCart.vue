@@ -39,7 +39,7 @@
                   </td>
                   <td class="text-nowrap">
                     <div class="d-flex justify-content-center">
-                      <div class="input-group input-group-sm" style="width:110px">
+                      <div class="input-group input-group-sm" style="width:120px">
                         <input type="number" class="form-control"
                         min="1"
                         :disabled="item.id === status.loadingItem"
@@ -160,7 +160,7 @@ export default {
         if (response.data.success) {
           this.status.loadingItem = ''
           this.getCart()
-          this.emitter.emit('updatecart')
+          this.emitter.emit('update-cart')
         }
       }).catch(error => {
         this.emitter.emit('push-message', {
@@ -175,7 +175,7 @@ export default {
       this.isLoading = true
       this.$http.delete(url).then((response) => {
         this.$httpMessageState(response, 'removed from cart')
-        this.emitter.emit('updatecart')
+        this.emitter.emit('update-cart')
         this.status.loadingItem = ''
         this.getCart()
         this.isLoading = false
@@ -199,7 +199,7 @@ export default {
         this.$httpMessageState(response, 'Applied')
         this.getCart()
         this.isLoading = false
-        this.emitter.emit('updatecart')
+        this.emitter.emit('update-cart')
       }).catch(error => {
         this.emitter.emit('push-message', {
           style: 'danger',

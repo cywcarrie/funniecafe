@@ -202,7 +202,7 @@ export default {
       this.$http.post(url, { data: cart })
         .then((response) => {
           this.$httpMessageState(response, 'added to cart')
-          this.emitter.emit('updatecart')
+          this.emitter.emit('update-cart')
           this.status.loadingItem = ''
         }).catch(error => {
           this.emitter.emit('push-message', {
@@ -231,7 +231,7 @@ export default {
         this.isLoading = false
       }, 300)
       localStorage.setItem('favorite', JSON.stringify(this.favoriteData))
-      this.emitter.emit('updatefavorite')
+      this.emitter.emit('update-favorite')
     }
   },
   computed: {
