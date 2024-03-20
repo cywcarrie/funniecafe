@@ -97,7 +97,7 @@
         </div>
       </div>
     </div>
-    <div class="py-5 bg-light">
+    <div class="py-5 bg-white">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-4 mb-3 mb-md-0">
