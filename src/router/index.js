@@ -22,7 +22,7 @@ const routes = [
     children: [
       {
         path: 'products',
-        component: () => import('../views/back/ProductsView')
+        component: () => import('../views/back/ProductsView.vue')
       },
       {
         path: 'orders',
