@@ -31,24 +31,24 @@
         <div class="collapse navbar-collapse fw-bold" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
             <li class="nav-item">
-              <router-link to="/about"  class="nav-link fs-5"
+              <router-link to="/about" class="nav-link fs-5"
           >About</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/products"  class="nav-link fs-5"
+              <router-link to="/products" class="nav-link fs-5"
           >Products</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/favorite"  class="nav-link fs-5"
+              <router-link to="/favorite" class="nav-link fs-5"
           >Favorites</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/faqs"  class="nav-link fs-5"
+              <router-link to="/faqs" class="nav-link fs-5"
           >FAQs</router-link>
             </li>
           </ul>
           <div class="d-flex d-none d-lg-block">
-            <router-link to="/cart"  class="nav-link text-primary hover-nav position-relative fs-5"
+            <router-link to="/cart" class="nav-link text-primary hover-nav position-relative fs-5"
             >Cart<i class="bi bi-cart-fill fs-3 ps-1"></i>
             <span class="badge text-white bg-danger position-absolute" style="top:-11px; right:-15px;" v-if="cart.final_total > 0">$ {{ $filters.currency(cart.final_total) }}</span>
             </router-link>
