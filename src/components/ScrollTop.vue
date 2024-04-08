@@ -1,7 +1,7 @@
 <template>
   <button type="button" class="btn btn-secondary top rounded-circle" v-show="scY > 500" @click.prevent="goTop">
     <i class="bi bi-caret-up-fill"></i>
-    </button>
+  </button>
 </template>
 
 <script>
