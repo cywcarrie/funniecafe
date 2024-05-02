@@ -3,16 +3,13 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import {
   Form, Field, ErrorMessage, defineRule, configure
 } from 'vee-validate'
-// import AllRules from '@vee-validate/rules'
 import * as AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 import en from '@vee-validate/i18n/dist/locale/en.json'
-
 import App from './App.vue'
 import router from './router'
 import { currency, date } from './methods/filters'
