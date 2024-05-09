@@ -20,28 +20,28 @@
               type="button"
               class="list-group-item list-group-item-action fw-bold"
               aria-current="true"
-              @click="getAllProducts" :class="{'active': typeName === '全部'}">
+              @click="getAllProducts" :class="{'active': categoryName === ''}">
               <i class="bi bi-cup-hot-fill me-2"></i>
               All
               </button>
               <button
               type="button"
               class="list-group-item list-group-item-action fw-bold"
-              @click="getCategory('Coffee', '咖啡')" :class="{'active': typeName === '咖啡'}">
+              @click="getCategory('Coffee')" :class="{'active': categoryName === 'Coffee'}">
               <i class="bi bi-cup-hot-fill me-2"></i>
               Coffee
               </button>
               <button
               type="button"
               class="list-group-item list-group-item-action fw-bold"
-              @click="getCategory('Macaron', '馬卡龍')" :class="{'active': typeName === '馬卡龍'}">
+              @click="getCategory('Macaron')" :class="{'active': categoryName === 'Macaron'}">
               <i class="bi bi-cup-hot-fill me-2"></i>
               Macaron
               </button>
               <button
               type="button"
               class="list-group-item list-group-item-action fw-bold"
-              @click="getCategory('Cheesecake', '蛋糕')" :class="{'active': typeName === '蛋糕'}">
+              @click="getCategory('Cheesecake')" :class="{'active': categoryName === 'Cheesecake'}">
               <i class="bi bi-cup-hot-fill me-2"></i>
               CheeseCake
               </button>
@@ -52,10 +52,10 @@
               Products
             </button>
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
-              <li @click="getAllProducts" :class="{'active': typeName === '全部'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2 "></i>All</button></li>
-              <li @click="getCategory('Coffee', '咖啡')" :class="{'active': typeName === '咖啡'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Coffee</button></li>
-              <li @click="getCategory('Macaron', '馬卡龍')" :class="{'active': typeName === '馬卡龍'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Macaron</button></li>
-              <li @click="getCategory('Cheesecake', '蛋糕')" :class="{'active': typeName === '蛋糕'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>CheeseCake</button></li>
+              <li @click="getAllProducts" :class="{'active': categoryName === ''}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2 "></i>All</button></li>
+              <li @click="getCategory('Coffee')" :class="{'active': categoryName === 'Coffee'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Coffee</button></li>
+              <li @click="getCategory('Macaron')" :class="{'active': categoryName === 'Macaron'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Macaron</button></li>
+              <li @click="getCategory('Cheesecake')" :class="{'active': categoryName === 'Cheesecake'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>CheeseCake</button></li>
             </ul>
           </div>
         </div>
@@ -136,7 +136,6 @@ export default {
       pageShow: false,
       isLoading: false,
       categoryName: '',
-      typeName: '全部',
       id: '',
       favoriteData: JSON.parse(localStorage.getItem('favorite')) || [],
       status: {
@@ -147,7 +146,6 @@ export default {
   inject: ['emitter'],
   methods: {
     getAllProducts (page = 1) {
-      this.typeName = '全部'
       this.categoryName = ''
       this.pageShow = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`
@@ -181,9 +179,8 @@ export default {
         })
       })
     },
-    getCategory (categoryName, typeName) {
+    getCategory (categoryName) {
       this.getProducts()
-      this.typeName = typeName
       this.categoryName = categoryName
     },
     getProduct (id) {
