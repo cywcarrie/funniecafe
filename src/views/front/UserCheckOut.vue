@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70" />
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner2 container-fluid">
   <h2 class="position-absolute text-center text-white fw-bolder">Checkout Process</h2>
   </div>
@@ -101,7 +101,7 @@
               v-model="form.message"></textarea>
             </div>
             <div class="d-flex justify-content-between">
-              <router-link class="btn btn-outline-primary" to="/cart"><i class="bi bi-caret-left-fill"></i>Previous</router-link>
+              <RouterLink class="btn btn-outline-primary" to="/cart"><i class="bi bi-caret-left-fill"></i>Previous</RouterLink>
               <button type="submit" class="btn btn-primary">Next<i class="bi bi-caret-right-fill"></i></button>
             </div>
           </FormVue>

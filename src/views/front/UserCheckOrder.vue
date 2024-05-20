@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70" />
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner2 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">Checkout Process</h2>
   </div>
@@ -82,7 +82,7 @@
                 <button class="btn btn-primary ms-auto" type="submit">Confirm Payment<i class="bi bi-caret-right-fill"></i></button>
               </div>
               <div class="text-end" v-if="order.is_paid === true">
-                <router-link to="/products" class="btn btn-primary ms-auto">Continue Shopping<i class="bi bi-cart4 ps-1 fs-5"></i></router-link>
+                <RouterLink to="/products" class="btn btn-primary ms-auto">Continue Shopping<i class="bi bi-cart4 ps-1 fs-5"></i></RouterLink>
               </div>
             </form>
           </div>

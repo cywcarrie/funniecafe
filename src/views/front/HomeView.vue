@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70" />
   <section>
     <div class="home d-flex justify-content-center align-items-center position-relative">
       <div class="text-center text-white-50">
@@ -20,7 +20,7 @@
             <h3 class="fw-bold mb-4 fs-1 d-flex justify-content-center align-items-center open text-primary text-uppercase">Grand Opening</h3>
             <p class="mb-2 fs-3 fw-bold text-capitalize text-dark">Free Delivery on all orders</p>
             <p class="mb-4">Only For 3 days</p>
-            <router-link to="/products" class="btn btn-lg btn-primary fw-bold">Shop Now</router-link>
+            <RouterLink to="/products" class="btn btn-lg btn-primary fw-bold">Shop Now</RouterLink>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
           <p class="fw-bolder fs-4 lh-lg">We ensure our coffee, cakes and macarons have all the great taste, and we offer fresh drinks and dessert based on high quality. Hoping you will enjoy it.</p>
         </div>
         <div class="text-center py-3 mb-5">
-          <router-link class="btn btn-outline-secondary btn-lg fw-bold home-about-btn" to="/products">Shop Now</router-link>
+          <RouterLink class="btn btn-outline-secondary btn-lg fw-bold home-about-btn" to="/products">Shop Now</RouterLink>
         </div>
       </div>
     </div>
@@ -65,9 +65,9 @@
         <h2 class="text-center fw-bolder mb-5 text-primary text-nowrap">Hot Products</h2>
         <Swiper />
         <div class="text-end mt-4">
-          <router-link to='/products' class="btn btn-primary rounded-pill px-3">
+          <RouterLink to='/products' class="btn btn-primary rounded-pill px-3">
             More Products<i class="bi bi-caret-right-fill"></i>
-          </router-link>
+          </RouterLink>
         </div>
       </div>
     </div>

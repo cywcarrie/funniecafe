@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70"/>
+  <LoadingVue :active="isLoading" :loader="'bars'" :color="'#6c584c'" :width="70" :height="70" />
   <div class="d-flex justify-content-center align-items-center my-5 position-relative banner banner1 container-fluid">
     <h2 class="position-absolute text-center text-white fw-bolder">Product</h2>
   </div>
@@ -9,8 +9,8 @@
       <a href="#" title="Previous" class="text-black-50 hover-nav fw-bold" @click.prevent="$router.go(-1)"><i class="bi bi-arrow-left-square-fill fs-2"></i></a>
       <nav aria-label="breadcrumb" class="mt-3 mb-md-4 d-flex justify-content-start d-none d-md-block">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><router-link to="/" class="text-dark hover-nav fw-bold">Home</router-link></li>
-          <li class="breadcrumb-item"><router-link to="/products" class="text-dark hover-nav fw-bold">Products</router-link></li>
+          <li class="breadcrumb-item"><RouterLink to="/" class="text-dark hover-nav fw-bold">Home</RouterLink></li>
+          <li class="breadcrumb-item"><RouterLink to="/products" class="text-dark hover-nav fw-bold">Products</RouterLink></li>
           <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
         </ol>
       </nav>
