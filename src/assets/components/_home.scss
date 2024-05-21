@@ -5,6 +5,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 
 .open {
@@ -49,6 +50,7 @@
   background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://i.imgur.com/OuXxwkc.jpg) no-repeat;  
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 
 .home-about-btn{
@@ -75,4 +77,5 @@
   background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://i.imgur.com/zP2ZSQm.jpg) no-repeat;  
   background-size: cover;
   background-position: top;
+  background-attachment: fixed;
 }
