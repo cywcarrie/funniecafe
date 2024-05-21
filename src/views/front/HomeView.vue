@@ -172,7 +172,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@media (pointer: coarse) {
+@media screen and (max-width:767px){
   .gb-container {
       background-attachment: inital !important;
   }
