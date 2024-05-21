@@ -78,9 +78,3 @@
   background-position: top;
   background-attachment: fixed;
 }
-
-@media (pointer: coarse) {
-  .gb-container {
-      background-attachment: inital !important;
-  }
-}

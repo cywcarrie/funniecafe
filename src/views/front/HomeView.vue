@@ -171,3 +171,10 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@media (pointer: coarse) {
+  .gb-container {
+      background-attachment: inital !important;
+  }
+}
+</style>
