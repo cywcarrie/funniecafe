@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="py-5 about" id="about">
+    <div class="py-5 about gb-container" id="about">
       <div class="container">
         <h2 class="text-center fs-1 fw-bolder my-5 pt-3 text-white">We Are The Best Cafe</h2>
         <div class="text-center text-white px-3 px-md-5">
@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div class="py-5 mt-5 home-subscribe">
+    <div class="py-5 mt-5 home-subscribe gb-container">
       <div class="container">
         <div class="row py-5">
           <div class="col-lg-6">

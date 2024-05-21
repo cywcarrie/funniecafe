@@ -5,7 +5,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
 }
 
 .open {
@@ -78,4 +77,10 @@
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
+}
+
+@media (pointer: coarse) {
+  .gb-container {
+      background-attachment: inital !important;
+  }
 }
