@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="py-5 bg-white">
-      <div class="container py-3" data-aos="zoom-in" data-aos-duration="800">
+      <div class="container py-md-5 py-3" data-aos="zoom-in" data-aos-duration="800">
         <div class="row justify-content-center">
           <div class="col text-center">
             <h3 class="fw-bold mb-4 fs-1 d-flex justify-content-center align-items-center open text-primary text-uppercase">Grand Opening</h3>
@@ -36,8 +36,8 @@
         </div>
       </div>
     </div>
-    <div class="py-5 bg-light">
-      <div class="container py-3">
+    <div class="py-5 bg-white">
+      <div class="container py-md-5 py-3">
         <div class=" row g-0 align-items-center flex-row-reverse">
           <div class="col-lg-6 text-lg-start px-lg-4 p-0 text-center">
             <h2 class="fs-1 text-primary fw-bolder">20% off</h2>
@@ -60,8 +60,8 @@
         </div>
       </div>
     </div>
-    <div class=" mt-5 bg-white">
-      <div class="container py-3">
+    <div class="py-5 bg-light">
+      <div class="container py-md-5 py-3">
         <h2 class="text-center fw-bolder mb-5 text-primary text-nowrap">Hot Products</h2>
         <Swiper />
         <div class="text-end mt-4">
@@ -71,7 +71,13 @@
         </div>
       </div>
     </div>
-    <div class="py-5 mt-5 home-subscribe">
+    <div class="py-5 bg-white">
+      <div class="container py-md-5 py-3">
+        <h2 class="text-center fw-bold text-primary text-nowrap mb-5">FAQs</h2>
+        <FAQs />
+      </div>
+    </div>
+    <div class="py-5 home-subscribe">
       <div class="container">
         <div class="row py-5">
           <div class="col-lg-6">
@@ -97,33 +103,6 @@
         </div>
       </div>
     </div>
-    <div class="py-5 bg-white">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-4 mb-3 mb-md-0">
-            <div class="d-flex flex-column align-items-center">
-              <span class="fs-1 text-secondary"><i class="bi bi-truck"></i></span>
-              <h4 class="text-primary fw-bold pt-2">Free Delivery</h4>
-              <p>Free Delivery Over NTD 500</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3 mb-md-0">
-            <div class="d-flex flex-column align-items-center">
-              <span class="fs-1 text-secondary"><i class="bi bi-check-circle"></i></span>
-              <h4 class="text-primary fw-bold pt-2">Free Macaron</h4>
-              <p> Get a macaron for every NTD 3000 purchase</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="d-flex flex-column align-items-center">
-              <span class="fs-1 text-secondary"><i class="bi bi-bag-check"></i></span>
-              <h4 class="text-primary fw-bold pt-2">20% Off</h4>
-              <p>Use Coupon Code to save 20% on your order</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
   <Footer />
 </template>
@@ -131,6 +110,7 @@
 <script>
 import Navbar from '@/components/UserNavbar.vue'
 import Swiper from '@/components/SwiperComponent.vue'
+import FAQs from '@/components/UserFAQs.vue'
 import Footer from '@/components/FooterComponent.vue'
 
 export default {
@@ -143,6 +123,7 @@ export default {
   components: {
     Navbar,
     Swiper,
+    FAQs,
     Footer
   },
   inject: ['emitter'],

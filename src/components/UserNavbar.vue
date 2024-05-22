@@ -42,10 +42,6 @@
               <RouterLink to="/favorite" class="nav-link fs-5"
           >Favorites</RouterLink>
             </li>
-            <li class="nav-item">
-              <RouterLink to="/faqs" class="nav-link fs-5"
-          >FAQs</RouterLink>
-            </li>
           </ul>
           <div class="d-flex d-none d-lg-block">
             <RouterLink to="/cart" class="nav-link text-primary hover-nav position-relative fs-5"

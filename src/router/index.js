@@ -61,10 +61,6 @@ const routes = [
     component: () => import('../views/front/UserFavoriteView.vue')
   },
   {
-    path: '/faqs',
-    component: () => import('../views/front/FAQsView.vue')
-  },
-  {
     path: '/:pathMatch(.*)*',
     redirect: {
       name: 'home'

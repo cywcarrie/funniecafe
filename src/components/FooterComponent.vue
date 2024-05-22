@@ -12,8 +12,6 @@
           >Products</RouterLink></li>
             <li class="nav-item"><RouterLink to="/favorite"  class="nav-link px-2 text-white fw-bold hover-nav"
           >Favorites</RouterLink></li>
-            <li class="nav-item"><RouterLink to="/faqs"  class="nav-link px-2 text-white fw-bold hover-nav"
-          >FAQs</RouterLink></li>
           </ul>
           <ul class="list-unstyled d-flex justify-content-center pt-2">
             <li class="nav-item"><a class="text-white hover-nav" href="#" @click.prevent=""><i style="font-size: 24px" class="bi bi-facebook"></i></a></li>
