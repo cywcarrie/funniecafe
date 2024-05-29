@@ -43,7 +43,7 @@
             <div class="fs-4 ms-2 text-primary fw-bold" v-if="product.price"><span class="text-danger">Now Sales:</span> NTD {{ $filters.currency(product.price) }}</div>
           </div>
           <div class="d-flex justify-content-end align-items-center">
-            <div class="input-group mb-5" style="width:220px">
+            <div class="input-group mb-5 product-cart-input">
               <input type="number" class="form-control border-primary" v-model.number="qty" min="1">
               <button type="button" class="btn btn-primary" @click="addToCart(product.id, qty)">
                 <i class="bi bi-cart-fill pe-1"></i>Add To Cart

@@ -52,9 +52,9 @@
               Products
             </button>
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
-              <li @click="getAllProducts" :class="{'active': categoryName === ''}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2 "></i>All</button></li>
-              <li @click="getCategory('Coffee')" :class="{'active': categoryName === 'Coffee'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Coffee</button></li>
-              <li @click="getCategory('Macaron')" :class="{'active': categoryName === 'Macaron'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Macaron</button></li>
+              <li><button @click="getAllProducts" :class="{'active': categoryName === ''}" class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2 "></i>All</button></li>
+              <li><button @click="getCategory('Coffee')" :class="{'active': categoryName === 'Coffee'}" class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Coffee</button></li>
+              <li><button @click="getCategory('Macaron')" :class="{'active': categoryName === 'Macaron'}" class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>Macaron</button></li>
               <li @click="getCategory('Cheesecake')" :class="{'active': categoryName === 'Cheesecake'}"><button class="dropdown-item fw-bold" type="button"><i class="bi bi-cup-hot-fill me-2"></i>CheeseCake</button></li>
             </ul>
           </div>
@@ -62,11 +62,10 @@
         <div class="col-lg-9">
           <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
             <div class="col mb-4" v-for="item in filterProducts" :key="item.id">
-              <div class=" card product-card w-100 h-100" style="width: 18rem">
+              <div class=" card product-card w-100 h-100">
                 <RouterLink :to="`/product/${item.id}`">
                   <div class="product-img cursor-pointer" @click="getProduct(item.id)">
                     <img
-                    style=" height: 180px; background-position: center"
                     :src="item.imageUrl"
                     class="card-img-top object-fit-cover"
                     alt="productImages"/>

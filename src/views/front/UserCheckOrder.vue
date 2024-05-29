@@ -23,7 +23,7 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-md-10">
           <div class="d-flex justify-content-center align-items-center" v-if="order.is_paid === true">
-            <i class="bi bi-check-circle-fill fs-1 pe-2" style="color:#198754;"></i>
+            <i class="bi bi-check-circle-fill fs-1 pe-2 text-success"></i>
             <h2 class="fw-bold mb-0 text-success text-uppercase fs-1"> Success !</h2>
           </div>
           <h6 class="fw-bold mt-4 mb-5 text-center" v-if="order.is_paid === true">A confirmation as been sent to your email !</h6>

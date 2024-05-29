@@ -14,9 +14,9 @@
           >Favorites</RouterLink></li>
           </ul>
           <ul class="list-unstyled d-flex justify-content-center pt-2">
-            <li class="nav-item"><a class="text-white hover-nav" href="#" @click.prevent=""><i style="font-size: 24px" class="bi bi-facebook"></i></a></li>
-            <li class="nav-item ms-3"><a class="text-white hover-nav" href="#" @click.prevent=""><i style="font-size: 24px" class="bi bi-github"></i></a></li>
-            <li class="nav-item ms-3"><a class="text-white hover-nav" href="#" @click.prevent="goToLogin" title="Admin Login"><i style="font-size: 24px" class="bi bi-person-circle"></i></a></li>
+            <li class="nav-item"><a class="text-white hover-nav" href="#" @click.prevent=""><i class="bi bi-facebook footer-icon-size"></i></a></li>
+            <li class="nav-item ms-3"><a class="text-white hover-nav" href="#" @click.prevent=""><i class="bi bi-github footer-icon-size"></i></a></li>
+            <li class="nav-item ms-3"><a class="text-white hover-nav" href="#" @click.prevent="goToLogin" title="Admin Login"><i class="bi bi-person-circle footer-icon-size"></i></a></li>
           </ul>
         </div>
         <p class="text-center text-white">© Funnie Cafe - Only for Self Learning Purpose</p>

@@ -6,10 +6,10 @@
         <Vue3Marquee
         class="container text-dark text-center fw-bold"
         :pause-on-hover="true">
-          <span style="margin: 0 30px;">
+          <span class="navbar-marquee">
             Using the coupon code<span class="text-white"> funniecafe </span>to get a<span class="text-white"> 20% </span> discount on your order.
           </span>
-          <span style="margin: 0 30px;">
+          <span class="navbar-marquee">
             Using the coupon code<span class="text-white"> funniecafe </span>to get a<span class="text-white"> 20% </span> discount on your order.
           </span>
         </Vue3Marquee>
@@ -25,7 +25,7 @@
         <div class="d-flex d-lg-none d-md-block">
           <RouterLink to="/cart"  class="nav-link text-primary hover-nav position-relative">
             <i class="bi bi-cart-fill fs-3"></i>
-            <span class="badge text-white bg-danger position-absolute" style="top:-11px; right:-8px;" v-if="cart.final_total > 0">$ {{ $filters.currency(cart.final_total) }}</span>
+            <span class="badge text-white bg-danger position-absolute navbar-badge-position" v-if="cart.final_total > 0">$ {{ $filters.currency(cart.final_total) }}</span>
           </RouterLink>
         </div>
         <div class="collapse navbar-collapse fw-bold" id="navbarSupportedContent">
@@ -46,7 +46,7 @@
           <div class="d-flex d-none d-lg-block">
             <RouterLink to="/cart" class="nav-link text-primary hover-nav position-relative fs-5"
             >Cart<i class="bi bi-cart-fill fs-3 ps-1"></i>
-            <span class="badge text-white bg-danger position-absolute" style="top:-11px; right:-15px;" v-if="cart.final_total > 0">$ {{ $filters.currency(cart.final_total) }}</span>
+            <span class="badge text-white bg-danger position-absolute navbar-badge-position" v-if="cart.final_total > 0">$ {{ $filters.currency(cart.final_total) }}</span>
             </RouterLink>
           </div>
         </div>
